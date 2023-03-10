@@ -1,6 +1,8 @@
 const express = require('express'); 
 const mongoose = require('mongoose');
 require('dotenv').config()
+const BookRouter = require ('./routes/book')
+const AuthRouter = require('./routes/author');
 
 const PORT = process.env.PORT 
 const DB_URL = process.env.DB_URL 
@@ -8,8 +10,9 @@ const DB_URL = process.env.DB_URL
 const server = express()
 server.use(express.json())
 
+server.use('/books', BookRouter)
 
-const AuthRouter=require('./routes/author');
+
 
 server.use(['/author','/Author'],AuthRouter)
 
@@ -21,7 +24,7 @@ server.use(['/author','/Author'],AuthRouter)
 
 mongoose.connect(DB_URL, (err) => {
     if (!err) {
-        return console.log("db connected")
+        return console.log("DB connected")
     }
     console.log("not connected")
 })
