@@ -9,6 +9,9 @@ const server = express()
 server.use(express.json())
 
 
+const AuthRouter=require('./routes/author');
+
+server.use(['/author','/Author'],AuthRouter)
 
 
 
