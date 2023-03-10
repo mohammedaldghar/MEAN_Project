@@ -10,7 +10,7 @@ const DB_URL = process.env.DB_URL
 const server = express()
 server.use(express.json())
 
-server.use('/books', BookRouter)
+server.use(['/book','/Book'], BookRouter)
 
 
 
