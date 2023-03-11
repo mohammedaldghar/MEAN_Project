@@ -28,13 +28,16 @@ router.get('/:id', (req, res) => {
 
 /*-----------------------------post ----------------- */
  router.post('/', (req, res) => {
+const auth=new authModel(req.body)
+auth.save((err,createdauth)=>{
+  console.log(`creation of auth ${req.body.firstName} done :)`);
+   if (!err) return res.json(createdauth)
+  res.status(500).send(err)}
 
-  authModel.create(req.body, (err, createdauth) => {
-          if (!err) return res.json(createdauth)
-          res.status(500).send(err)
-      }) 
 
+)
 })
+
 
 /*-----------------------------put :id----------------- */
 router.put('/:id', (req, res) => {
