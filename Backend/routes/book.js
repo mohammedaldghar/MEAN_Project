@@ -2,16 +2,12 @@ const express = require('express');
 const router = express.Router()
 const BookModel = require('../models/book')
 
-/* git all book */
-
 router.get('/', (req, res) => {
     BookModel.find({}, (err, books) => {
         if (!err) return res.send(books)
         res.status(500).json(err)
     })
 })
-
-/* git book by id */
 
 router.get('/:id', (req, res) => {
     const id = req.params.id                         //
@@ -21,49 +17,28 @@ router.get('/:id', (req, res) => {
     })
 })
 
-/* add book  */
+router.post('/', (req, res) => {
 
-router.post('/', async (req, res) => {
-
-    const books = await BookModel.find({});
-    let count = 0;
-    if (!books.length == 0) {
-        count = books[books.length - 1].id
-    }
-    const newBook = {
-        id: count + 1,
-        ...req.body
-    }
-    await BookModel.create(newBook, (err, createdbook) => {
+    BookModel.create(req.body, (err, createdbook) => {
         if (!err) return res.json(createdbook)
         res.status(500).send(err)
     })
 })
 
-/* edit in book */
-
 router.patch('/:id', (req, res) => {
-    
-    BookModel.findByIdAndUpdate(req.params.id,req.body, (err, book) => {
-        if (!err) return res.send("edited successfuly")
+    const checkId = req.params.id
+    const bookToEdited = {
+        ...req.body
+    }
+    BookModel.findByIdAndUpdate(checkId, bookToEdited, (err, book) => {
+        if (!err) return res.send(bookToEdited)
         res.status(500).send(err)
     })
 })
-
-/* delete book */
 
 router.delete('/:id', (req, res) => {
-
-    BookModel.findOneAndRemove({ _id: req.params.id }, (err, book) => {
-        if (!err) return res.send("deleted")
-        res.status(500).send(err)
-    })
-})
-
-/* delete all books */
-
-router.delete('/', (req, res) => {
-    BookModel.deleteMany({}, (err, books) => {
+    const checkId = req.params.id                        
+    BookModel.remove({ _id: checkId }, (err, book) => {
         if (!err) return res.send("deleted")
         res.status(500).send(err)
     })
