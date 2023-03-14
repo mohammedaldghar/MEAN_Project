@@ -1,14 +1,10 @@
-
-/*
-  Handle if the element is not exist 
-*/
-//Handle files roots
-
 const express = require("express");
 const router = express.Router();
 const user = require("../models/user");
 const book = require("../models/book");
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const TOKEN_KEY = process.env.TOKEN_KEY || "Dghar";
 //Add new user
 router.post("/", async (req, res) => {
   let newId = 1;
@@ -31,16 +27,21 @@ router.post("/", async (req, res) => {
         .send("Books is Empty You can't add books to this user");
     }
   }
+  const { email } = req.body;
+  const token = jwt.sign({ email }, TOKEN_KEY);
   const newUser = {
     id: newId,
+    token: token,
     ...req.body,
   };
-  user.create(newUser, (error, createdUser) => {
+  encryptedpassword = await bcrypt.hash(newUser.password, 10);
+  newUser.password = encryptedpassword;
+  await user.create(newUser, (error, createdUser) => {
     if (!error) {
-      res.status(200).send("User has been added successfully");
+      return res.status(200).send("User has been added successfully");
     } else {
       console.log(error);
-      res.status(500).send("error in adding user");
+      return res.status(500).send("error in adding user");
     }
   });
 });
@@ -57,9 +58,10 @@ router.delete("/:id", (req, res) => {
   const id = req.params.id;
   user.findByIdAndDelete(id, (error) => {
     if (!error) {
-      res.status(200).send("User deleted successfully");
+      return res.status(200).send("User deleted successfully");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -72,9 +74,10 @@ router.put("/:id", (req, res) => {
   };
   user.findByIdAndUpdate(id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("User updated successfully");
+      return res.status(200).send("User updated successfully");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -83,9 +86,10 @@ router.put("/:id", (req, res) => {
 router.get("/", (req, res) => {
   user.find({}, (error, user) => {
     if (!error) {
-      res.status(200).send(user);
+      return res.status(200).send(user);
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -98,9 +102,10 @@ router.get("/:id/currentReading", (req, res) => {
       books: user.readingBooks,
     };
     if (!error) {
-      res.status(200).send(data);
+      return res.status(200).send(data);
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -113,9 +118,10 @@ router.get("/:id/wantToRead", (req, res) => {
       books: user.wantToReadBooks,
     };
     if (!error) {
-      res.status(200).send(data);
+      return res.status(200).send(data);
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -128,9 +134,10 @@ router.get("/:id/read", (req, res) => {
       books: user.readBooks,
     };
     if (!error) {
-      res.status(200).send(data);
+      return res.status(200).send(data);
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -146,9 +153,10 @@ router.post("/:id/addWantToReadBook", async (req, res) => {
   modifiedUser.wantToReadBooks.addToSet(newBook);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book added successfully to user");
+      return res.status(200).send("Book added successfully to user");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -164,9 +172,10 @@ router.post("/:id/addCurrentlyReadingBook", async (req, res) => {
   modifiedUser.readingBooks.addToSet(newBook);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book added successfully to user");
+      return res.status(200).send("Book added successfully to user");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -182,9 +191,10 @@ router.post("/:id/addReadBook", async (req, res) => {
   modifiedUser.readBooks.addToSet(newBook);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book added successfully to user");
+      return res.status(200).send("Book added successfully to user");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -192,16 +202,17 @@ router.post("/:id/addReadBook", async (req, res) => {
 //Remove from currently reading list
 router.delete("/:id/editCurrentlyReadingBook", async (req, res) => {
   const modifiedUser = await user.findById(req.params.id);
-  if(!modifiedUser.readingBooks.length){
-   return res.status(500).send("Collection of books is Empty");
+  if (!modifiedUser.readingBooks.length) {
+    return res.status(500).send("Collection of books is Empty");
   }
   let index = modifiedUser.readingBooks.indexOf(req.body.book);
   modifiedUser.readingBooks.splice(index, 1);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book deleted");
+      return res.status(200).send("Book deleted");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -209,16 +220,17 @@ router.delete("/:id/editCurrentlyReadingBook", async (req, res) => {
 //Remove from read list
 router.delete("/:id/editReadBook", async (req, res) => {
   const modifiedUser = await user.findById(req.params.id);
-  if(!modifiedUser.readBooks.length){
-  return res.status(500).send("Collection of books is Empty");
+  if (!modifiedUser.readBooks.length) {
+    return res.status(500).send("Collection of books is Empty");
   }
   let index = modifiedUser.readBooks.indexOf(req.body.book);
   modifiedUser.readBooks.splice(index, 1);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book deleted");
+      return res.status(200).send("Book deleted");
     } else {
       console.log(error);
+      return;
     }
   });
 });
@@ -226,16 +238,17 @@ router.delete("/:id/editReadBook", async (req, res) => {
 //Remove from Want to read list
 router.delete("/:id/editWantToReadBook", async (req, res) => {
   const modifiedUser = await user.findById(req.params.id);
-  if(!modifiedUser.wantToReadBooks.length){
-  return res.status(500).send("Collection of books is Empty");
+  if (!modifiedUser.wantToReadBooks.length) {
+    return res.status(500).send("Collection of books is Empty");
   }
   let index = modifiedUser.wantToReadBooks.indexOf(req.body.book);
   modifiedUser.wantToReadBooks.splice(index, 1);
   user.findByIdAndUpdate(req.params.id, modifiedUser, (error) => {
     if (!error) {
-      res.status(200).send("Book deleted");
+      return res.status(200).send("Book deleted");
     } else {
       console.log(error);
+      return;
     }
   });
 });
