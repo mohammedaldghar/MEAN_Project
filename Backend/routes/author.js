@@ -27,14 +27,22 @@ router.get('/:id', (req, res) => {
 
 
 /*-----------------------------post ----------------- */
- router.post('/', (req, res) => {
-
-  authModel.create(req.body, (err, createdauth) => {
-          if (!err) return res.json(createdauth)
-          res.status(500).send(err)
-      }) 
-
+router.post('/',async(req, res) => {
+  const auths = await authModel.find({});
+    let count = 0;
+    if (!auths.length == 0) {
+      count = auths[auths.length - 1].auth_ID
+  }
+    const newAuth = {
+      auth_ID: count + 1,
+      ...req.body
+  }
+  await authModel.create(newAuth, (err, createdAuth) => {
+    if (!err) return res.json(createdAuth)
+    res.status(500).send(err)
 })
+}) 
+
 
 /*-----------------------------put :id----------------- */
 router.put('/:id', (req, res) => {
