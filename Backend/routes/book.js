@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router()
 const BookModel = require('../models/book')
+const CategoryModel = require('../models/category')
+const AuthorModel = require('../models/author')
 
 /* git all book */
 
@@ -13,9 +15,8 @@ router.get('/', (req, res) => {
 
 /* git book by id */
 
-router.get('/:id', (req, res) => {
-    const id = req.params.id                         //
-    BookModel.find({ _id: id }, (err, book) => {
+router.get('/:id', (req, res) => {                       
+    BookModel.find({ _id: req.params.id }, (err, book) => {
         if (!err) return res.json(book)
         res.status(500).json(err)
     })
@@ -24,20 +25,35 @@ router.get('/:id', (req, res) => {
 /* add book  */
 
 router.post('/', async (req, res) => {
-
-    const books = await BookModel.find({});
-    let count = 0;
-    if (!books.length == 0) {
-        count = books[books.length - 1].id
+    const category = await CategoryModel.find({});
+    if (!category.length == 0) {
+        const author = await AuthorModel.find({});
+        if (!author.length == 0) {
+            const books = await BookModel.find({});
+            let count = 0;
+            if (!books.length == 0) {
+                count = books[books.length - 1].id
+            }
+            let rate = req.body.Rating;
+            console.log(rate)
+            if (!rate) {
+                rate = 0;
+            }
+            const newBook = {
+                id: count + 1,
+                ...req.body,
+                Rating: rate
+            }
+            await BookModel.create(newBook, (err, createdbook) => {
+                if (!err) return res.json(createdbook)
+                res.status(500).send(err)
+            })
+        } else {
+            return res.send("there is no author");
+        }
+    } else {
+        return res.send("there is no category");
     }
-    const newBook = {
-        id: count + 1,
-        ...req.body
-    }
-    await BookModel.create(newBook, (err, createdbook) => {
-        if (!err) return res.json(createdbook)
-        res.status(500).send(err)
-    })
 })
 
 /* edit in book */
