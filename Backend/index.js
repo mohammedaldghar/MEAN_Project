@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 require("dotenv").config();
 const BookRouter = require("./routes/book");
-const CategoryBookRouter = require("./routes/category_book");
-const AuthorBookRouter = require("./routes/author_book")
 const AuthRouter = require("./routes/author");
 const CategoryRouter = require("./routes/category");
 const userRoutes = require("./routes/user");
@@ -21,8 +19,6 @@ server.use(express.json());
 server.use(cors());
 
 server.use(["/book", "/Book"], BookRouter);
-server.use("/categorybook", CategoryBookRouter);
-server.use("/authorbook", AuthorBookRouter);
 server.use(["/category", "/Category"], CategoryRouter);
 server.use(["/author", "/Author"], AuthRouter);
 server.use(["/user", "/User"], userRoutes);

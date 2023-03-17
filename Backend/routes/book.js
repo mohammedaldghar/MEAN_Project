@@ -15,8 +15,28 @@ router.get('/', (req, res) => {
 
 /* git book by id */
 
-router.get('/:id', (req, res) => {                       
+router.get('/:id', (req, res) => {
     BookModel.find({ _id: req.params.id }, (err, book) => {
+        if (!err) return res.json(book)
+        res.status(500).json(err)
+    })
+})
+
+/* git book by category id */
+
+router.get('/categorybook/:id', (req, res) => {
+
+    BookModel.find({ CategoryId: req.params.id }, (err, book) => {
+        if (!err) return res.json(book)
+        res.status(500).json(err)
+    })
+})
+
+/* git book by author id */
+
+router.get('/authorbook/:id', (req, res) => {
+
+    BookModel.find({ AuthorId: req.params.id }, (err, book) => {
         if (!err) return res.json(book)
         res.status(500).json(err)
     })
