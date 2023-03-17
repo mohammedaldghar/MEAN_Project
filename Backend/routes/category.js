@@ -38,14 +38,14 @@ router.post('/', async (req, res) => {
   if (!category.length == 0) {
     count = category[category.length - 1].id
   }
-  let rate = req.body.rate;
+  let rate = req.body.Rating;
   if (!rate) {
     rate = 0;
   }
   const newCategory = {
     id: count + 1,
-    name: req.body.name,
-    rate: rate
+    ...req.body,
+    Rating: rate
   }
   await CategoryModel.create(newCategory, (err, createCategory) => {
     if (!err) return res.json(createCategory)
@@ -77,7 +77,7 @@ router.delete('/', (req, res) => {
 
   CategoryModel.deleteMany({}, (err) => {
 
-    res.send("delete")
+    res.send("deleted")
   })
 })
 
