@@ -1,0 +1,29 @@
+.logo{     /*User Photo and Logo photo */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.backColor{     /*Navbar Background*/
+    background-color: #774F38;
+    /* position: fixed; */
+    width: 100%;
+}
+.fontSize{      /*logout icon size*/ 
+    font-size: 35px;
+}
+
+.searchBar{
+    border: 4px solid #979490;
+    border-radius: 30px;
+    font-size: 25px;
+}
+.searchBtn{
+    border: 3px solid #979490;
+    border-radius: 20px;
+    font-size: 25px;
+}
+.searchBtn:hover{
+    background-color: #979490;
+    color: white;
+}
+

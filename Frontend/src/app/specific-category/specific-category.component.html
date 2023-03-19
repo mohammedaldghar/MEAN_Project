@@ -1,0 +1,17 @@
+<div class="Border mt-3 ">
+<div class="container mt-4 ">
+    <div class="row">
+        <div  *ngFor="let book of books" class="card mx-4 mt-3" style="width: 18rem;">
+            <img src="../../assets/msg704385414-278576.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a [routerLink]="'/books/'+book._id" class="text-decoration-none text-dark"><h5 class="card-title">{{book.Name}}</h5></a>
+              <a class="text-decoration-none text-dark" [routerLink]="'/authors/'+book.AuthorId._id"><p class="card-text">By: {{book.AuthorId.firstName}} {{book.AuthorId.lastName}}</p></a>
+            </div>
+          </div>
+<div *ngIf="books.length==0" class="d-flex justify-content-center">
+    <p class="text-danger fontSize">There is no Books in this Categories To show!!</p>
+</div>
+    </div>
+</div>
+</div>
+<div class="cat-pos"><p class="mx-4">{{category[0].name}}</p></div>

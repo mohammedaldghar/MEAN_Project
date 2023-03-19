@@ -1,0 +1,18 @@
+.fontSize{
+    font-size: 25px;
+}
+.Border{
+    border: 3px solid #774F38;
+    position: absolute;
+    width: 90%;
+    z-index: -1;
+    left: 50px;
+    border-radius: 10px;
+}
+.cat-pos{
+    border-radius: 10px;
+    background-color: #AB8B64;
+    width: 20%;
+    margin-left: 90px;
+    font-size: 27px;
+}

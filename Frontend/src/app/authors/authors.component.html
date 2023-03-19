@@ -1,0 +1,13 @@
+<div class="container mt-4 ">
+    <div class="row">
+        <div   *ngFor="let author of authors" class="card mx-4 mt-3" style="width: 18rem;">
+            <img src="../../assets/msg704385414-278576.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <a [routerLink]="'/authors/'+author._id" class="text-decoration-none text-dark"><h5 class="card-title">{{author.firstName}} {{author.lastName}}</h5></a>
+            </div>
+          </div>
+<div *ngIf="authors.length==0" class="d-flex justify-content-center">
+    <p class="text-danger fontSize">There is no Authors To show!!</p>
+</div>
+    </div>
+</div>
