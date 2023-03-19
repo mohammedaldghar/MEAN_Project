@@ -33,6 +33,6 @@ mongoose.connect(DB_URL, (err) => {
 
 server.listen(PORT, (err) => {
   if (!err) {
-    return console.log("server start");
+    return console.log("server is listenning at port: "+PORT);
   }
 });
