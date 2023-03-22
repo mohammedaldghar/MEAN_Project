@@ -1,1 +1,34 @@
-<p>specific-book works!</p>
+<div class="container-fluid d-flex mt-5">
+    <div class="card" style="width: 18rem;">
+        <img src="../../assets/images.jpeg" class="card-img-top h-100" alt="...">
+      </div>
+      <div class="ms-4 mt-4">
+       <h5 class="text-decoration-none text-dark">{{book[0].Name}}</h5>
+      <a [routerLink]="'/authors/'+book[0].AuthorId._id" class="text-decoration-none text-dark"><p>By: {{book[0].AuthorId.firstName}} {{book[0].AuthorId.lastName}}</p></a>
+      <a [routerLink]="'/category/'+book[0].CategoryId._id" class="text-decoration-none text-dark"><h5>{{book[0].CategoryId.name}}</h5></a>
+    <p><i *ngFor="let star of stars" class="fa-solid fa-star mt-3 ms-1 rated"></i><i  *ngFor="let star of unStar" class="fa-regular fa-star mt-3 ms-1 rate"></i></p>
+    <p><a [routerLink]="'/books/'+book[0]._id"   (click)="addWantToReadBook('6419ce0a9408ac0a62ca783c',book[0]._id)" class="btn btn-primary ms-3">Add to want To Reading List</a>
+    <a [routerLink]="'/books/'+book[0]._id"    (click)="addCurrentlyReadingBook('6419ce0a9408ac0a62ca783c',book[0]._id)"  class="btn btn-primary ms-3">Add to Cuurently Reading List</a>
+</p>
+   <p> <a [routerLink]="'/books/'+book[0]._id"   (click)="addReadBook('6419ce0a9408ac0a62ca783c',book[0]._id)"    class="btn btn-primary " style="margin-left: 150px;">Add to Read List</a></p>
+    <p><a class="text-decoration-none btn btn-danger" (click)="deleteBookFromUser('6419ce0a9408ac0a62ca783c',book[0]._id)"> Delete From My List</a></p>
+</div>
+</div>
+<div class="form-floating mt-3 container">
+    <textarea class="form-control  commentArea" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"  #comment></textarea>
+    <label for="floatingTextarea2" class="ms-2">Review</label>
+    <a [routerLink]="'/books/'+book[0]._id" class="btn btn-primary mt-2 ms-4" (click)="addComment(book[0]._id,'6419f0e39408ac0a62ca7a67',comment)">Add Review</a>
+  </div>
+<div class="title mt-5">
+    <p class="ms-5">Reviews</p>
+</div>
+<div class="container contains mt-1">
+<div class="container" *ngFor="let comment of book[0].Reviews">
+    <h5 class="mt-5">{{comment.userId.firstName}} {{comment.userId.lastName}}: </h5>
+    <p class="ms-5">{{comment.Comment}}</p>
+</div>
+
+<div *ngIf="book[0].Reviews.length==0" class="d-flex justify-content-center">
+    <p class="text-danger fontSize">There is no reviews for this book until now</p>
+</div>
+</div>

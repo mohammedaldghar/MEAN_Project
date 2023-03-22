@@ -1,0 +1,24 @@
+.title{
+    border-radius: 10px;
+    background-color: #AB8B64;
+    width: 13%;
+    margin-left: 190px;
+    font-size: 27px;
+    margin-bottom: -2.5rem;
+}
+.contains{
+    border: 3px solid #774F38;  
+    width: 90%;
+    position: absolute;
+    z-index: -1;
+    left: 90px;
+    border-radius: 10px; 
+    
+}
+.fontSize{
+    font-size: 25px;
+}
+.commentArea{
+    border: 3px solid gray;
+    border-radius: 10px;
+}
