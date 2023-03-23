@@ -13,6 +13,11 @@ import { SpecificAuthorComponent } from './specific-author/specific-author.compo
 import { SpecificBookComponent } from './specific-book/specific-book.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './logout/logout.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,11 +30,14 @@ import { HomeComponent } from './home/home.component';
     SpecificAuthorComponent,
     SpecificBookComponent,
     NotFoundPageComponent,
-    HomeComponent
+    HomeComponent,
+    LogoutComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, ReactiveFormsModule,
     HttpClientModule,
   ],
   providers: [],

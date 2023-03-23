@@ -6,20 +6,21 @@ const jwt = require("jsonwebtoken");
 const TOKEN_KEY = process.env.TOKEN_KEY || "Dghar";
 
 router.post("/", async (req, res) => {
-  const {email} = req.body;
-  const token = req.headers["token-value"];
-  if (!token) {
-    return res.status(403).send("A token is required for login");
-  }
-  const decoded = jwt.verify(token, TOKEN_KEY);
-  const logedUser = await user.findOne({ email });
+  // const {email} = req.body;
+  // const token = req.headers["token-value"];
+  // if (!token) {
+  //   return res.status(403).send("A token is required for login");
+  // }
+  // const decoded = jwt.verify(token, TOKEN_KEY);
+
+  const logedUser = await user.findOne({ email: req.body.email });
   if (!logedUser) {
     return res.status(500).send("This Email is not exist");
   }
 
   if (await bcrypt.compare(req.body.password, logedUser.password)) {
-    const allBooks = [...logedUser.readingBooks,...logedUser.wantToReadBooks,...logedUser.readBooks];
-    return res.status(200).send(allBooks);
+    //const allBooks = [...logedUser.readingBooks,...logedUser.wantToReadBooks,...logedUser.readBooks];
+    return res.status(200).send({ message: "Welcome", token: logedUser.token });
   } else {
     return res.status(500).send("Incorrect password");
   }

@@ -1,0 +1,34 @@
+* {
+    margin: 2px;
+    padding: 10px;
+}
+
+/* body{
+    background-image: url('../../assets/background.jpg');
+    width: 50%;
+} */
+.userIN {
+    width: 80%;
+    background-color: white;
+    border-color: black;
+    border-width: thin;
+    border-radius: 20px;
+}
+
+.logBtn {
+    color: white;
+    background-color: #c87c20;
+    border: none;
+    border-radius: 40px;
+    width: 200px;
+}
+
+.logBtn:hover {
+    background-color: #f9be75;
+
+}
+
+.toCenter {
+    position: relative;
+    left: 30%;
+}

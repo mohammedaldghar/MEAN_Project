@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
   const category = await CategoryModel.find({});
   for (categ of category) {
     if (categ.name == req.body.name) {
-      return res.status(500).send("This category is already exist");
+      return res.status(500).send({ message: "This category is already exist" });
     }
   }
   let count = 0;
@@ -47,11 +47,14 @@ router.post('/', async (req, res) => {
     ...req.body,
     Rating: rate
   }
-  await CategoryModel.create(newCategory, (err, createCategory) => {
-    if (!err) return res.json(createCategory)
-    res.status(500).send(err)
-  })
+  const added = await CategoryModel.create(newCategory);
+  if (added) {
+    return res.status(201).send({ message: "success" })
+  } else {
+    return res.status(500).send({ message: "faild" })
+  }
 })
+
 
 
 router.put('/:id', (req, res) => {

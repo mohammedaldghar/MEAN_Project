@@ -1,0 +1,67 @@
+<div class="w-75 m-auto py-5">
+
+    <div *ngIf='error' class="alert alert-danger">
+        <p>{{error}}</p>
+    </div>
+    <div class="col-sm-8 toCenter">
+        <div class="row">
+            <div class="col-md-6 ">
+                <form [formGroup]='loginForm' class="d-md-flex-column   border rounded bg-light" (ngSubmit)='submitLoginForm(loginForm)'>
+
+
+                    <div class="form-group">
+                        <label for="email" class=" userIN">email</label>
+                        <input formControlName="email" class="form-control" type="text" name="" id="email">
+                        <div *ngIf="loginForm.get('email')?.errors != null && loginForm.get('email')?.touched "
+                            class="alert my-2  alert-danger">
+                            <p *ngIf="loginForm.get('email')?.errors?.['required']">email is required</p>
+                            <p *ngIf="loginForm.get('email')?.errors?.['email']">email is inavalid</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class=" userIN">password</label>
+                        <input formControlName="password" class="form-control" type="text" name="" id="password">
+                        <div *ngIf="loginForm.get('password')?.errors != null && loginForm.get('password')?.touched "
+                            class="alert my-2  alert-danger">
+                            <p *ngIf="loginForm.get('password')?.errors?.['required']">password is required</p>
+                            <!-- <p *ngIf="loginForm.get('password')?.errors?.['pattern']">password is inavalid</p> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="">remember me
+                    </div>
+                    <button [disabled]="loginForm.invalid" class="btn btn-info logBtn" type="submit">Login</button>
+                    <a routerLink="/signup">sign up</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-8 toCenter">
+        <div class="row">
+            <div class="col-md-6 ">
+                <form id="gg" class="d-md-flex-column   border border-dark rounded-5 bg-light">
+    
+                    <div class="form-group">
+                        <label for="userin1">email</label> <input id="userin1" type="email" class=" userIN"
+                            placeholder="enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="userin2"> password</label> <input id="userin2" type="password" class=" userIN"
+                            placeholder="enter password">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="">remember me
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="logBtn" value="log in"><br>
+                        new in goodreads ? <a routerLink="/signup">sign up</a>
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    -->
+
+</div>

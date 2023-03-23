@@ -8,14 +8,22 @@ import { SpecificAuthorComponent } from './specific-author/specific-author.compo
 import { SpecificBookComponent } from './specific-book/specific-book.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { LogoutComponent } from './logout/logout.component';
+
 const routes: Routes = [
-  {path:'',component:HomeComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path:'home',component:HomeComponent},
   {path:'categories',component:CategoriesComponent},
   {path:'category/:id',component:SpecificCategoryComponent},
   {path:'authors',component:AuthorsComponent},
   {path:'books',component:BooksComponent},
   {path:'authors/:id',component:SpecificAuthorComponent},
-  {path:'books/:id',component:SpecificBookComponent},
+  { path: 'books/:id', component: SpecificBookComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'logout', component: LogoutComponent },
   {path:"**",component:NotFoundPageComponent}
 ];
 
@@ -23,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+  
 export class AppRoutingModule { }

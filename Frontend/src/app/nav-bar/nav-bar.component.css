@@ -4,7 +4,7 @@
     border-radius: 50%;
 }
 .backColor{     /*Navbar Background*/
-    background-color: #774F38;
+    background-color: #9b6e56;
     /* position: fixed; */
     width: 100%;
 }
@@ -25,5 +25,8 @@
 .searchBtn:hover{
     background-color: #979490;
     color: white;
+}
+.fa-regular{
+    margin-top: 12px;
 }
 

@@ -7,6 +7,12 @@ const jwt = require("jsonwebtoken");
 const TOKEN_KEY = process.env.TOKEN_KEY || "Dghar";
 //Add new user
 router.post("/", async (req, res) => {
+  const alluser = await user.find({});
+  for (x of alluser) {
+    if (x.email == req.body.email) {
+      return res.status(500).send({ message: "This user is already exist" });
+    }
+  }
   let newId = 1;
   const users = await user.find({});
   if (users.length > 0) {
@@ -15,17 +21,17 @@ router.post("/", async (req, res) => {
     }
   }
 
-  if (
-    req.body.readingBooks.length > 0 ||
-    req.body.readingBooks.length > 0 || // check if there books or not when we add books to user
-    req.body.readingBooks.length > 0
-  ) {
+  // if (
+  //   req.body.readingBooks.length > 0 ||
+  //   req.body.wantToReadBooks.length > 0 || // check if there books or not when we add books to user
+  //   req.body.readBooks.length > 0
+  // ) {
     const books = await book.find({});
     if (books.length == 0) {
       return res
         .status(200)
         .send("Books is Empty You can't add books to this user");
-    }
+    //}
   }
   const { email } = req.body;
   const token = jwt.sign({ email }, TOKEN_KEY);
@@ -33,6 +39,7 @@ router.post("/", async (req, res) => {
     id: newId,
     token: token,
     ...req.body,
+    isAdmin:false
   };
   encryptedpassword = await bcrypt.hash(newUser.password, 10);
   newUser.password = encryptedpassword;
