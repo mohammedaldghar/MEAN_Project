@@ -1,70 +1,98 @@
-* {
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Alkatra', sans-serif;
+    
+}
+.header{
+    background-image:linear-gradient(rgba(0,0,0,0.2) ,rgba(0,0,0,0.2)) ,
+    url('../../assets/background.jpg');
+    width: 90%;
+    left: 5%;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+.wave
+{
+    position: absolute;
+    bottom: -98px;
+    /* height:50vh; */
+    /* width: 100%; */
 }
 
-body {
-    background-image: url('../../assets/background.jpg');
-    background-repeat: no-repeat;
+.middle {
+height: 80vh;
+width: 80%;
+display: flex;
+justify-content: start;
+align-items: center;
+}
+.middle h1{
+    font-size: 60px;
 }
 
-.bg-gg {
-    background-color: #AB8B64;
-    color: white;
+
+.imgs-blocks{
+    width: 40px;
+    /* float: left; */
 }
 
-.bg-gg:hover {
-    background-color: white;
-    color: #AB8B64;
+img:hover{
+    cursor: pointer;
+    opacity:0.5;
 }
 
-#icon-book {
+h2{width: 70%;
+    color:white ;
+    border: 1px solid hsl(33, 92%, 72%);
+    background-color: #f9be75;
+    border-radius: 20px;
+   left: 15%;
+   position: relative;
+}
+.cat-bord{
+    margin-bottom: 5px;
+    border:1px solid black ;
+    border-radius: 20px;
+    padding-left: 35%;
+}
+.cat-bord h3{
+    color:black;
+}
+.cat-bord h3:hover{
+cursor: pointer;
+color:#b76a0d ;
+}
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/* #icon-book {
+width: 20px;
+float: left;
+}
+#author-icon{
     width: 20px;
     float: left;
 }
-
-#author-icon {
+#categories-icon{
     width: 20px;
     float: left;
-}
-
-#categories-icon {
-    width: 20px;
-    float: left;
-}
-
-#welcome {
-    color: white;
+} */
+#welcome{
+    color: rgb(245, 237, 237);
     /* font-size:xx-large; */
-    font-style: normal;
-    font-weight: lighter;
-    font-family: 'Times New Roman', Times, serif;
+    font-style:normal;
+    font-weight:lighter;
+    font-family:'Times New Roman', Times, serif;
+}
+.span1{
+    color: rgb(241, 241, 17);
+  
 }
 
-#backgIMG {
-    width: 100%;
-    height: 100%;
-    float: both;
-    position: fixed;
-}
-
-#span1 {
-    color: rgb(227, 227, 113);
-
-}
-
-#span2 {
-    color: rgb(185, 150, 24);
-
-}
-
-#line {
+#line{
     margin-top: 0;
     color: black;
-}
-
-.card :hover {
-    transition: 1s;
-    cursor: pointer;
-    background-color: #f9be75;
-    box-shadow: #18f5c9;
 }
