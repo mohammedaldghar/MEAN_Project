@@ -36,15 +36,15 @@ export class LoginComponent {
           //console.log(this.user?.isAdmin)
 
           console.log("noooooor");
-          this._Router.navigate(['/home'])
+          //this._Router.navigate(['/home'])
 
           console.log(this._AuthenticationService.currentUser.value.isAdmin)
-          // if (this._AuthenticationService.currentUser.value.isAdmin) {
-          //   this._Router.navigate(['/books'])
-          // }
-          // else {
-          //   this._Router.navigate(['/home'])
-          // }
+          if (this._AuthenticationService.currentUser.value.isAdmin) {
+            this._Router.navigate(['/admin-category'])
+          }
+          else {
+            this._Router.navigate(['/home'])
+          }
         }
       },
       error: (err) => {

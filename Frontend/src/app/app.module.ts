@@ -17,6 +17,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminCategoryComponent } from './admin-category/admin-category.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LogoutComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    AdminCategoryComponent
   ],
   imports: [
     BrowserModule,

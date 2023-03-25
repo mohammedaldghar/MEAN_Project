@@ -1,0 +1,25 @@
+<div class="container">
+    <table class="table table-bordered mt-4 ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let catge of admin_categories'>
+                <td class="text">{{catge.id}}</td>
+                <td>{{catge.name}}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning mr-4">
+                        <i class="fa fa-edit"></i>Edit
+                    </button>
+                    <button class="btn btn-sm btn-danger ml-2">
+                        <i class="fa fa-remove "></i>Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
