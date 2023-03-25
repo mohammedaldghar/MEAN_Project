@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router, RouterModule, Routes } from '@angular/router';
-import { AuthorService } from '../author.service';
-import { CategoriesService } from '../categories.service';
-import { BooksService } from '../books.service';
+import { AuthorService } from '../services/author.service';
+import { CategoriesService } from '../services/categories.service';
+import { BookService } from '../services/book.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   categories!:any[];
   books!:any[];
   constructor(private router:Router,private authorService:AuthorService,
-    private categoriesService:CategoriesService,private bookService:BooksService){
+    private categoriesService:CategoriesService,private bookService:BookService){
     this.authorService.getAuthors().subscribe((author) => {
       this.authors = author;
     });
