@@ -14,5 +14,7 @@ export class CategoriesService {
   getCategoryByTd(id:any):Observable<any>{
     return this.http.get<any[]>('http://localhost:5000/category/'+id,{headers: new HttpHeaders().set('Authorization', 'secret token')})
   }
-   
+  deleteCategoryById(id: any) {
+    this.http.delete('http://localhost:5000/category/' + id).subscribe()
+  }
 }

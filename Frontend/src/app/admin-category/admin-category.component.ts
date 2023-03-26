@@ -15,5 +15,8 @@ export class AdminCategoryComponent {
       this.admin_categories = category;
     });
   }
-
+  ondelete(_id: any) {
+    this._CategoriesService.deleteCategoryById(_id)
+    console.log(_id)
+  }
 }

@@ -30,7 +30,6 @@ export class LoginComponent {
           localStorage.setItem('userToken', response.token)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value
-
           this._Router.navigate(['/home'])
         }
       },
