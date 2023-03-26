@@ -22,6 +22,7 @@ import { AllComponent } from './all-books/all-books.component';
 import { ReadComponent } from './reading-books/reading-books.component';
 import { Curntlty_readingComponent } from './currently-reading-books/currently-reading-books.component';
 import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.c
     AllComponent,
     ReadComponent,
     Curntlty_readingComponent,
-    Want_to_readComponent
+    Want_to_readComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,

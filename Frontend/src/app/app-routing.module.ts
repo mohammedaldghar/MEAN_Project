@@ -16,30 +16,32 @@ import { AllComponent } from './all-books/all-books.component';
 import { Curntlty_readingComponent } from './currently-reading-books/currently-reading-books.component';
 import { ReadComponent } from './reading-books/reading-books.component';
 import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path:'home',component:HomeComponent},
-  {path:'categories',component:CategoriesComponent},
-  {path:'category/:id',component:SpecificCategoryComponent},
-  {path:'authors',component:AuthorsComponent},
-  {path:'books',component:BooksComponent},
-  {path:'authors/:id',component:SpecificAuthorComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'categories', component: CategoriesComponent },
+  { path: 'category/:id', component: SpecificCategoryComponent },
+  { path: 'authors', component: AuthorsComponent },
+  { path: 'books', component: BooksComponent },
+  { path: 'authors/:id', component: SpecificAuthorComponent },
   { path: 'books/:id', component: SpecificBookComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'admin-category',component:AdminCategoryComponent},
-  {path:'all',component:AllComponent},
-{path:'read',component:ReadComponent},
-{path:'current',component:Curntlty_readingComponent},
-{path:'wantToRead',component:Want_to_readComponent},
-  {path:"**",component:NotFoundPageComponent}
+  { path: 'admin-category', component: AdminCategoryComponent },
+  { path: 'admin', component: AdminLoginComponent},
+  { path: 'all', component: AllComponent },
+  { path: 'read', component: ReadComponent },
+  { path: 'current', component: Curntlty_readingComponent },
+  { path: 'wantToRead', component: Want_to_readComponent },
+  { path: "**", component: NotFoundPageComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-  
+
 export class AppRoutingModule { }

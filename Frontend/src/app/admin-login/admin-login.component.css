@@ -1,0 +1,40 @@
+* {
+    margin: 2px;
+    padding: 10px;
+}
+
+/* body{
+    background-image: url('../../assets/background.jpg');
+    width: 50%;
+} */
+.form_class {
+    background-image: url("../../assets/gehad.jpg");
+    width: 500px;
+    height: 400px;
+}
+
+p {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.logBtn {
+    color: white;
+    background-color: #9b8767;
+    border: none;
+    border-radius: 40px;
+    width: 120px;
+
+}
+
+.logBtn:hover {
+    background-color: #f9be75;
+
+}
+
+.toCenter {
+    position: relative;
+    left: 30%;
+}

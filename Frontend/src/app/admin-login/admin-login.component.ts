@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { User } from '../user';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent {
+export class AdminLoginComponent {
 
   user!: User;
   error: string = '';
@@ -25,13 +25,23 @@ export class LoginComponent {
   submitLoginForm(loginForm: FormGroup) {
     this._AuthenticationService.login(loginForm.value).subscribe({
       next: (response) => {
+
         if (response.message == "Welcome") {
-          
+
           localStorage.setItem('userToken', response.token)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value
+          //console.log(this.user?.isAdmin)
 
-          this._Router.navigate(['/home'])
+          console.log("noooooor");
+
+          console.log(this._AuthenticationService.currentUser.value.isAdmin)
+          if (this._AuthenticationService.currentUser.value.isAdmin) {
+            this._Router.navigate(['/admin-category'])
+          }
+          else {
+            this._Router.navigate(['/admin'])
+          }
         }
       },
       error: (err) => {
@@ -39,7 +49,6 @@ export class LoginComponent {
       }
     })
   }
+
+
 }
-
-
-
