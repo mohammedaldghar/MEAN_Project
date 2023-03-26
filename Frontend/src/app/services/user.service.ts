@@ -21,8 +21,8 @@ export class UserService {
   getWantToReadBooks(id:any):Observable<any>{
     return this.http.get('http://localhost:5000/user/'+id+'read')
   }
-  getAllBooks(id:any):Observable<any>{
-    return this.http.get('http://localhost:5000/user/'+id+'allBooks')
+  getAllBooks(id:any):Observable<any[]>{
+    return this.http.get<any[]>('http://localhost:5000/user/641f02e896ef9ad92a0d17de/allBooks',{headers: new HttpHeaders().set('Authorization', 'secret token')})
   }
   
   }

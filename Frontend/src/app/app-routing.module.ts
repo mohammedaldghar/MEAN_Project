@@ -12,6 +12,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AllComponent } from './all-books/all-books.component';
+import { Curntlty_readingComponent } from './currently-reading-books/currently-reading-books.component';
+import { ReadComponent } from './reading-books/reading-books.component';
+import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +30,10 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'admin-category',component:AdminCategoryComponent},
+  {path:'all',component:AllComponent},
+{path:'read',component:ReadComponent},
+{path:'current',component:Curntlty_readingComponent},
+{path:'wantToRead',component:Want_to_readComponent},
   {path:"**",component:NotFoundPageComponent}
 ];
 
