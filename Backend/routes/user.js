@@ -26,11 +26,11 @@ router.post("/", async (req, res) => {
   //   req.body.wantToReadBooks.length > 0 || // check if there books or not when we add books to user
   //   req.body.readBooks.length > 0
   // ) {
-    const books = await book.find({});
-    if (books.length == 0) {
-      return res
-        .status(200)
-        .send("Books is Empty You can't add books to this user");
+  const books = await book.find({});
+  if (books.length == 0) {
+    return res
+      .status(200)
+      .send("Books is Empty You can't add books to this user");
     //}
   }
   const { email } = req.body;
@@ -39,7 +39,7 @@ router.post("/", async (req, res) => {
     id: newId,
     token: token,
     ...req.body,
-    isAdmin:false
+    isAdmin: false,
   };
   encryptedpassword = await bcrypt.hash(newUser.password, 10);
   newUser.password = encryptedpassword;
@@ -91,62 +91,87 @@ router.put("/:id", (req, res) => {
 
 // Get all users
 router.get("/", (req, res) => {
-  user.find({}, (error, user) => {
-    if (!error) {
-      return res.status(200).send(user);
-    } else {
-      console.log(error);
-      return;
-    }
-  });
+  user
+    .find({}, (error, user) => {
+      if (!error) {
+        return res.status(200).send(user);
+      } else {
+        console.log(error);
+        return;
+      }
+    })
+    .populate("readingBooks")
+    .populate("wantToReadBooks")
+    .populate("readBooks");
 });
 
 //Get Current reading Books
 router.get("/:id/currentReading", (req, res) => {
-  user.findById(req.params.id, (error, user) => {
-    const data = {
-      fullName: user.firstName + " " + user.lastName,
-      books: user.readingBooks,
-    };
-    if (!error) {
-      return res.status(200).send(data);
-    } else {
-      console.log(error);
-      return;
-    }
-  });
+  user
+    .findById(req.params.id, (error, user) => {
+      const data = {
+        fullName: user.firstName + " " + user.lastName,
+        books: user.readingBooks,
+      };
+      if (!error) {
+        return res.status(200).send(data);
+      } else {
+        console.log(error);
+        return;
+      }
+    })
+    .populate("readingBooks");
 });
 
 //Get Want to read Books
 router.get("/:id/wantToRead", (req, res) => {
-  user.findById(req.params.id, (error, user) => {
-    const data = {
-      fullName: user.firstName + " " + user.lastName,
-      books: user.wantToReadBooks,
-    };
-    if (!error) {
-      return res.status(200).send(data);
-    } else {
-      console.log(error);
-      return;
-    }
-  });
+  user
+    .findById(req.params.id, (error, user) => {
+      const data = {
+        fullName: user.firstName + " " + user.lastName,
+        books: user.wantToReadBooks,
+      };
+      if (!error) {
+        return res.status(200).send(data);
+      } else {
+        console.log(error);
+        return;
+      }
+    })
+    .populate("wantToReadBooks");
 });
 
 //Get read Books
 router.get("/:id/read", (req, res) => {
-  user.findById(req.params.id, (error, user) => {
-    const data = {
-      fullName: user.firstName + " " + user.lastName,
-      books: user.readBooks,
-    };
-    if (!error) {
-      return res.status(200).send(data);
-    } else {
-      console.log(error);
-      return;
-    }
-  });
+  user
+    .findById(req.params.id, (error, user) => {
+      const data = {
+        fullName: user.firstName + " " + user.lastName,
+        books: user.readBooks,
+      };
+      if (!error) {
+        return res.status(200).send(data);
+      } else {
+        console.log(error);
+        return;
+      }
+    })
+    .populate("readBooks");
+});
+
+//Get all User's Books
+router.get("/:id/allBooks", async (req, res) => {
+  const currentlyUser = await user
+    .findById(req.params.id)
+    .populate("readingBooks")
+    .populate("wantToReadBooks")
+    .populate("readBooks");
+  const allBooks = [
+    ...currentlyUser.readingBooks,
+    ...currentlyUser.wantToReadBooks,
+    ...currentlyUser.readBooks,
+  ];
+  res.status(200).send(allBooks);
 });
 
 // adding book to user in want to read list
