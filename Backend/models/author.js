@@ -6,7 +6,7 @@ const authSchema=new mongoose.Schema({
     firstName :{type:String,minlength:3 ,maxlength:15,required:true},   
     lastName :{type:String,minlength:3 ,maxlength:15,required:true}, 
     photo:{type:String, required:true},
-    DateOfBirth :{type:Date ,required:true},
+    DateOfBirth :{type:String,required:true},
     })
     
     const authModel=mongoose.model('author',authSchema)

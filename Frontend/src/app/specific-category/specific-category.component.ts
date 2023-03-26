@@ -14,7 +14,9 @@ export class SpecificCategoryComponent implements OnInit, OnChanges{
 this.activatedRoute.paramMap.subscribe(params =>{
   bookService.getBooksByCategory(params.get('id')).subscribe(book =>{
     this.books=book;
+    console.log(this.books)
   });
+  
   this.activatedRoute.paramMap.subscribe(params =>{
     categoryService.getCategoryByTd(params.get('id')).subscribe(category=>{
       this.category=category;

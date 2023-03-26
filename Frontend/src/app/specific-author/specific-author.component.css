@@ -17,15 +17,15 @@
 .fontSize{
     font-size: 25px;
 }
-.rate:hover{
+/* .rate:hover{
     color: gold;
-}
-.rate{
+} */
+/* .rate{
     color: black;
 }
 .rated{
     color: gold;
-}
+} */
 .bookCard{
     border: 4px solid gray;
     border-radius:10px ;

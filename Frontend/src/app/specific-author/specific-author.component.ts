@@ -11,6 +11,8 @@ export class SpecificAuthorComponent implements OnChanges ,OnInit{
   author!:any;
   books!:any[];
   rating:any=true;
+  // star!:any;
+  // unstar!:any;
   constructor(private activatedRoute: ActivatedRoute,bookService: BookService,authorService: AuthorService){
 this.activatedRoute.paramMap.subscribe(param=>{
 authorService.getAuthorById(param.get('id')).subscribe(author=>{
@@ -19,6 +21,10 @@ this.author = author;
 });
 this.activatedRoute.paramMap.subscribe(param=>{
   bookService.getBooksByAuthor(param.get('id')).subscribe(book=>{
+    book.forEach(element => {
+      element.star=Array(element.Rating).fill(0);
+      element.unstar=Array(5-element.Rating).fill(0);
+    });
     this.books=book
   });
 });
