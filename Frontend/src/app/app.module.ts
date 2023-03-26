@@ -18,6 +18,10 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
+import { AllBooksComponent } from './all-books/all-books.component';
+import { ReadingBooksComponent } from './reading-books/reading-books.component';
+import { CurrentlyReadingBooksComponent } from './currently-reading-books/currently-reading-books.component';
+import { WantToReadBooksComponent } from './want-to-read-books/want-to-read-books.component';
 
 
 @NgModule({
@@ -35,7 +39,11 @@ import { AdminCategoryComponent } from './admin-category/admin-category.componen
     LogoutComponent,
     SignupComponent,
     LoginComponent,
-    AdminCategoryComponent
+    AdminCategoryComponent,
+    AllBooksComponent,
+    ReadingBooksComponent,
+    CurrentlyReadingBooksComponent,
+    WantToReadBooksComponent
   ],
   imports: [
     BrowserModule,
