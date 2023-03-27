@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Category } from '../category';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,8 @@ export class CategoriesService {
   deleteCategoryById(id: any) {
     this.http.delete('http://localhost:5000/category/' + id).subscribe()
   }
-  update(categ: any) {
-    return this.http.put('http://localhost:5000/category/' + categ._id,categ)
+  update(categ: Category) {
+    console.log(categ.name);
+    return this.http.put('http://localhost:5000/category/' + categ._id ,categ).subscribe()
   }
 }

@@ -36,8 +36,8 @@ export class AdminCategoryComponent {
     //console.log(this.categoryToUpdate);
   }
   updateCategory() {
-    
+   // console.log(this.categoryToUpdate)
     this._CategoriesService.update(this.categoryToUpdate)
-    console.log(this.categoryToUpdate)
+    
   }
 }

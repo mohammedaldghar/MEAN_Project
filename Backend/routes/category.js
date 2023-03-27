@@ -56,11 +56,14 @@ router.post('/', async (req, res) => {
 })
 
 
-router.put("/:id", (req, res) => {
-  CategoryModel.findByIdAndUpdate(req.params.id, req.body, (err, category) => {
-    if (!err) return res.send("edited successfuly");
-    res.status(500).send(err);
-  });
+router.put("/:id", async (req, res) => {
+  
+  const updated = await CategoryModel.findByIdAndUpdate(req.params.id, req.body)
+  if (updated) {
+    return res.status(201).send({ message: "edited successfuly" })
+  } else {
+    return res.status(500).send({ message: "faild" })
+  }
 });
 
 
