@@ -1,20 +1,23 @@
 <div class="container d-flex justify-content-center mt-3">
-    <input type="text" class="w-50 searchBar" placeholder="Search For Category" #search  (keyup)="filterCategories(search)">
+    <input type="text" class="w-50 searchBar" placeholder="Search For Category" #search
+        (keyup)="filterCategories(search)">
     <div class="input-group-append">
-      <button class="btn searchBtn" type="button" id="button-addon2"   (click)="filterCategories(search)" (keyup.enter)="filterCategories(search)"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
+        <button class="btn searchBtn" type="button" id="button-addon2" (click)="filterCategories(search)"
+            (keyup.enter)="filterCategories(search)"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
 </div>
 
 <div class="container mt-4 ">
-<div class="row">
-    <div  *ngFor= 'let cat of searchedCateg' class="col-3 mx-4 mt-2 categoryCard d-flex justify-content-center fontSize">
-        <a [routerLink]="'/category/'+cat._id" class=" text-decoration-none text-dark">{{cat.name}}</a>
+    <div class="row">
+        <div *ngFor='let cat of searchedCateg'
+            class="col-3 mx-4 mt-2 categoryCard d-flex justify-content-center fontSize">
+            <a [routerLink]="'/category/'+cat._id" class=" text-decoration-none text-dark">{{cat.name}}</a>
+        </div>
+        <div *ngIf="categ.length==0" class="d-flex justify-content-center">
+            <p class="text-danger fontSize">There is no Categories To show!!</p>
+        </div>
+        <div *ngIf="searchedCateg.length==0" class="d-flex justify-content-center">
+            <p class="text-danger fontSize">There is no Categories Matched</p>
+        </div>
     </div>
-    <div *ngIf="categ.length==0" class="d-flex justify-content-center">
-        <p class="text-danger fontSize">There is no Categories To show!!</p>
-    </div>
-    <div *ngIf="searchedCateg.length==0" class="d-flex justify-content-center">
-        <p class="text-danger fontSize">There is no Categories Matched</p>
-    </div>
-</div>
 </div>

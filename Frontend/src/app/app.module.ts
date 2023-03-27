@@ -16,7 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { AdminCategoryComponent } from './admin-category/admin-category.component';
 import { AllComponent } from './all-books/all-books.component';
 import { ReadComponent } from './reading-books/reading-books.component';
@@ -50,7 +50,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule, ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

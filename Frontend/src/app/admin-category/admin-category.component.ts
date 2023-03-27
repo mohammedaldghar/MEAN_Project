@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../services/authentication.service';
 import { CategoriesService } from '../services/categories.service';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms'
+import { Category } from '../category';
+
 
 @Component({
   selector: 'app-admin-category',
@@ -9,14 +13,31 @@ import { CategoriesService } from '../services/categories.service';
 export class AdminCategoryComponent {
 
   admin_categories!: any[];
-
-  constructor(private _CategoriesService: CategoriesService) {
+  categoryToUpdate: Category = {
+    _id: '',
+    id: 0,
+    name: '',
+    Rating: 0,
+    __v:0
+  }
+  error = '';
+  constructor(private _CategoriesService: CategoriesService, private _AuthenticationService: AuthenticationService) {
     this._CategoriesService.getAllCategories().subscribe((category) => {
       this.admin_categories = category;
+      
     });
   }
+
   ondelete(_id: any) {
     this._CategoriesService.deleteCategoryById(_id)
-    console.log(_id)
+  }
+  onEdit(categ: Category) {
+    this.categoryToUpdate = categ;
+    //console.log(this.categoryToUpdate);
+  }
+  updateCategory() {
+    
+    this._CategoriesService.update(this.categoryToUpdate)
+    console.log(this.categoryToUpdate)
   }
 }

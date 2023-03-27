@@ -12,14 +12,37 @@
                 <td class="text">{{catge.id}}</td>
                 <td>{{catge.name}}</td>
                 <td>
-                    <button class="btn btn-sm btn-warning mr-4">
-                        <i class="fa fa-edit"></i>Edit
+                    <button class="btn  btn-warning mr-4" (click)="onEdit(catge)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <!-- <i class="fa fa-edit"></i> -->Edit
                     </button>
-                    <button class="btn btn-sm btn-danger ml-2" (click)="ondelete([catge._id])">
-                        <i class="fa fa-remove "></i>Delete
+                    <button class="btn  btn-danger ml-2" (click)="ondelete([catge._id])">
+                        <!-- <i class="fa fa-remove "></i> -->Delete
                     </button>
                 </td>
             </tr>
         </tbody>
     </table>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit category</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form #updateForm="ngForm" (ngSubmit)='updateCategory()'>
+
+                    <div class="form-group">
+                        <label for="name">Category Name</label>
+                        <input type="text" #name [(ngModel)]="categoryToUpdate.name" class="form-control"  name="name" id="name">
+                    </div>
+                    <div class="form-control">
+                        <input type="submit" value="Update" class="btn btn-primary w-100" >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

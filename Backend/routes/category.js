@@ -56,16 +56,12 @@ router.post('/', async (req, res) => {
 })
 
 
-
-router.put('/:id', (req, res) => {
-  const id = req.params.id
-  const updates = req.body;
-  usermodel.findByIdAndUpdate(id, updates, (err, user) => {
-    if (!err) return res.json(user);
+router.put("/:id", (req, res) => {
+  CategoryModel.findByIdAndUpdate(req.params.id, req.body, (err, category) => {
+    if (!err) return res.send("edited successfuly");
     res.status(500).send(err);
   });
-
-})
+});
 
 
 router.delete('/:id', (req, res) => {
