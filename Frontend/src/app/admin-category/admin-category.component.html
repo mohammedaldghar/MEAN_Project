@@ -1,4 +1,6 @@
 <div class="container">
+    <div class="text-right mt-3 "><i class="fa-solid fa-circle-plus fa-2xl mt-4 " role="button" data-bs-toggle="modal" data-bs-target="#exampleModal1"></i></div>
+
     <table class="table table-bordered mt-4 ">
         <thead>
             <tr>
@@ -12,7 +14,8 @@
                 <td class="text">{{catge.id}}</td>
                 <td>{{catge.name}}</td>
                 <td>
-                    <button class="btn  btn-warning mr-4" (click)="onEdit(catge)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button class="btn  btn-warning mr-4" (click)="onEdit(catge)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
                         <!-- <i class="fa fa-edit"></i> -->Edit
                     </button>
                     <button class="btn  btn-danger ml-2" (click)="ondelete([catge._id])">
@@ -23,24 +26,52 @@
         </tbody>
     </table>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit category</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel2">Edit category</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body " style="padding: 20px;">
 
                 <form #updateForm="ngForm" (ngSubmit)='updateCategory()'>
 
                     <div class="form-group">
+
                         <label for="name">Category Name</label>
-                        <input type="text" #name [(ngModel)]="categoryToUpdate.name" class="form-control"  name="name" id="name">
+                        <input type="text" #name [(ngModel)]="categoryToUpdate.name" class="form-control" name="name"
+                            id="name">
                     </div>
-                    <div class="form-control">
-                        <input type="submit" value="Update" class="btn btn-primary w-100" >
+                    <div class="d-flex ">
+                        <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
+                        <div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">Add new category</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="card m-5" style="padding: 20px;">
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                    <div class="form-group">
+                        <label for="name">Category Name </label>
+                        <input type="text" (ngModel)="name" name="name" id="name" class="form-control"
+                            placeholder="Category Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-primary mr-4 ">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                 </form>
             </div>
         </div>

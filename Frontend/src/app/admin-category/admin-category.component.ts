@@ -28,6 +28,18 @@ export class AdminCategoryComponent {
     });
   }
 
+  register(registerForm:any) {
+    this._CategoriesService.registerCategory(registerForm.value).subscribe(
+      (resp) => {
+        console.log("resp")
+      },
+      (err) => {
+        console.log("err");
+        
+      }
+    )
+  }
+
   ondelete(_id: any) {
     this._CategoriesService.deleteCategoryById(_id)
   }
