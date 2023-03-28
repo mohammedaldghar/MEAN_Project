@@ -23,5 +23,6 @@ export class NavBarComponent {
   isLogOut() {
     this._AuthenticationService.logout();
   }
+  isadmin:boolean=false
 
 }

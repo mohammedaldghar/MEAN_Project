@@ -23,6 +23,8 @@ import { ReadComponent } from './reading-books/reading-books.component';
 import { Curntlty_readingComponent } from './currently-reading-books/currently-reading-books.component';
 import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminBooksComponent } from './admin-books/admin-books.component';
+import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     ReadComponent,
     Curntlty_readingComponent,
     Want_to_readComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminBooksComponent,
+    AdminAuthersComponent
   ],
   imports: [
     BrowserModule,

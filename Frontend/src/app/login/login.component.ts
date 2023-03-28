@@ -26,7 +26,7 @@ export class LoginComponent {
     this._AuthenticationService.login(loginForm.value).subscribe({
       next: (response) => {
         if (response.message == "Welcome") {
-          
+          console.log(response.user)
           localStorage.setItem('userToken', response.token)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value

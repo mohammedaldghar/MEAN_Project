@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const TOKEN_KEY = process.env.TOKEN_KEY || "Dghar";
 //Add new user
+
 router.post("/", async (req, res) => {
   const alluser = await user.find({});
   for (x of alluser) {
@@ -45,10 +46,10 @@ router.post("/", async (req, res) => {
   newUser.password = encryptedpassword;
   await user.create(newUser, (error, createdUser) => {
     if (!error) {
-      return res.status(200).send("User has been added successfully");
+      return res.status(200).send({ message: "added_successfully" });
     } else {
       console.log(error);
-      return res.status(500).send("error in adding user");
+      return res.status(500).send({ message: "error_in_adding_user" });
     }
   });
 });

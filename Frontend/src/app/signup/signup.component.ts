@@ -29,7 +29,8 @@ export class SignupComponent {
     // console.log(registerForm.value)      /* will print object key and vaue*/
     this._AuthenticationService.register(registerForm.value).subscribe({       //  call function in service
       next: (response) => {
-        if (response.message == "success") {
+        if (response.message == "added_successfully") {
+          console.log("hi")
           this._Router.navigate(['/login'])
         }
       },
