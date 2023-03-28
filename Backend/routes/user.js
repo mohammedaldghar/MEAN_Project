@@ -167,6 +167,7 @@ router.get("/:id/allBooks", async (req, res) => {
     .populate("readingBooks")
     .populate("wantToReadBooks")
     .populate("readBooks");
+  console.log(currentlyUser)
   const allBooks = [
     ...currentlyUser.readingBooks,
     ...currentlyUser.wantToReadBooks,

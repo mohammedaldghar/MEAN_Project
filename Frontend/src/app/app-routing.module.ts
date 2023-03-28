@@ -17,6 +17,8 @@ import { Curntlty_readingComponent } from './currently-reading-books/currently-r
 import { ReadComponent } from './reading-books/reading-books.component';
 import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AdminBooksComponent } from './admin-books/admin-books.component';
+import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'admin-category', component: AdminCategoryComponent },
+  { path: 'admin-books', component: AdminBooksComponent },
+  { path: 'admin-authors',component:AdminAuthersComponent},
   { path: 'admin', component: AdminLoginComponent},
   { path: 'all', component: AllComponent },
   { path: 'read', component: ReadComponent },

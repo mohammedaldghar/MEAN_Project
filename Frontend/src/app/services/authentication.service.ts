@@ -52,6 +52,7 @@ export class AuthenticationService {
         readBooks: []
       })
     localStorage.removeItem('userToken');
+    localStorage.removeItem('loggedUser');
     this._Router.navigate(['/login'])
   }
 }

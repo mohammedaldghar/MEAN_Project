@@ -28,6 +28,7 @@ export class LoginComponent {
         if (response.message == "Welcome") {
           console.log(response.user)
           localStorage.setItem('userToken', response.token)
+          localStorage.setItem('loggedUser', response.user)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value
           this._Router.navigate(['/home'])
