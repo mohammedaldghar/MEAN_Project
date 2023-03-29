@@ -57,8 +57,6 @@
                 <p *ngIf="registerForm.get('password')?.errors?.['pattern']">password is inavalid</p>
             </div>
         </div>
-
         <button [disabled]="registerForm.invalid" class="btn btn-info" type="submit">register</button>
     </form>
-
 </div>

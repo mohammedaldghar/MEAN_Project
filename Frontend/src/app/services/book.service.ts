@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Book } from '../book';
 
 @Injectable({
   providedIn: 'root'
@@ -66,4 +67,16 @@ export class BookService {
   addComment(bookId:any, userId:any,comment:any):Observable<any>{
 return this.http.post('http://localhost:5000/book/'+bookId+'/comment',{'userId':userId,'Comment':comment});
   }
+  
+  registerBook(bookData: Book) {
+    return this.http.post('http://localhost:5000/book/', bookData)
+  }
+  update(book: Book) {
+    console.log(book.Name);
+    return this.http.put('http://localhost:5000/book/' + book._id, book)
+  }
+  deleteBookById(id: any) {
+    this.http.delete('http://localhost:5000/book/' + id).subscribe()
+  }
+
 }
