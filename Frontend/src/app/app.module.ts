@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MessagesModule } from 'primeng/messages';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,8 +54,7 @@ import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
   imports: [
     BrowserModule,
     AppRoutingModule, ReactiveFormsModule,
-    HttpClientModule, FormsModule,
-    MessagesModule
+    HttpClientModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
