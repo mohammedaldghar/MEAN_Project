@@ -8,6 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  currentUser!:any;
   islogin: boolean = false;
   constructor(private _AuthenticationService: AuthenticationService) {
 
@@ -19,6 +20,8 @@ export class NavBarComponent {
         this.islogin = false;
       }
     })
+    this.currentUser=localStorage.getItem('loggedUser');
+    this.currentUser=JSON.parse(this.currentUser);
   }
   isLogOut() {
     this._AuthenticationService.logout();

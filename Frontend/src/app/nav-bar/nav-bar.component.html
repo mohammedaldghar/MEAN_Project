@@ -35,8 +35,8 @@
       <div class="row">
         <div class="col">
           <div class="w-100 d-flex justify-content align-items-center">
-            <img *ngIf="islogin" class="logo mx-3 " src="../../assets//msg704385414-278576.jpg" />
-            <a *ngIf="islogin" routerLink="all" class="text-light text-decoration-none ">Mohammed Dghar</a>
+            <img *ngIf="islogin" class="logo mx-3 " src="{{currentUser.photo}}" />
+            <a *ngIf="islogin" routerLink="all" class="text-light text-decoration-none ">{{currentUser.firstName}} {{currentUser.lastName}}</a>
           </div>
         </div>
       </div>
@@ -58,11 +58,4 @@
     </div>
   </div>
 </nav>
-
-<!-- <div class="continer-fluid d-flex justify-content-center mt-3">
-  
-  <input type="text" class="w-50 searchBar" placeholder="Search">
-  <div class="input-group-append">
-    <button class="btn searchBtn" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
-</div> -->
+ 

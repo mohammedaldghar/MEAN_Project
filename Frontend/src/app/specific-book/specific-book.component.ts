@@ -11,6 +11,8 @@ export class SpecificBookComponent implements OnInit,OnChanges{
   stars!:any;
   unStar!:any;
 mycoment: any;
+messages=false;
+currentUser!:any;
   constructor(private bookService: BookService,private activetedRoute: ActivatedRoute){
     this.activetedRoute.paramMap.subscribe(param=>{
       bookService.getBookByTd(param.get('id')).subscribe(book=>{
@@ -19,6 +21,8 @@ mycoment: any;
         this.unStar=Array(5-this.stars.length).fill(0);
       });
           });
+          this.currentUser=localStorage.getItem('loggedUser');
+          this.currentUser=JSON.parse(this.currentUser)
   }
   addWantToReadBook(userId:any, bookId:any){
     //step 1:
@@ -33,6 +37,7 @@ mycoment: any;
     this.bookService.addToWantToReadList(userId,bookId).subscribe(book=>{
       console.log("Book Added Sucessfully");
     });
+    this.messages=true;
   }
   addReadBook(userId:any, bookId:any){
     //Step 1:
@@ -47,6 +52,7 @@ mycoment: any;
     this.bookService.addToReadList(userId,bookId).subscribe(book=>{
       console.log("Book Added Successfully");
     });
+    this.messages=true;
   }
   addCurrentlyReadingBook(userId:any, bookId:any){
     //Step 1:
@@ -61,6 +67,7 @@ mycoment: any;
     this.bookService.addToCurrentelyReadingList(userId,bookId).subscribe(book=>{
       console.log("Book Added Successfully");
     });
+    this.messages=true;
   }
   deleteBookFromUser(userId:any, bookId:any){
     //Step 1:
@@ -76,6 +83,7 @@ mycoment: any;
       console.log("Deleted from read");
     });
     console.log("Book Deleted Successfully");
+    this.messages=true;
   }
 addComment(bookId:any,userId:any,comment:any){
   this.bookService.addComment(bookId,userId,comment.value).subscribe(book=>{
