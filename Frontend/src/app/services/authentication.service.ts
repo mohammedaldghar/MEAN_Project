@@ -53,6 +53,6 @@ export class AuthenticationService {
       })
     localStorage.removeItem('userToken');
     localStorage.removeItem('loggedUser');
-    this._Router.navigate(['/login'])
+    this._Router.navigate(['/home'])
   }
 }

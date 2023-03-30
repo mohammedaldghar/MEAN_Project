@@ -8,24 +8,32 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  currentUser!:any;
+  currentUser!: any;
   islogin: boolean = false;
+  isadmin: boolean = false;
   constructor(private _AuthenticationService: AuthenticationService) {
 
     this._AuthenticationService.currentUser.subscribe(() => {
       if (this._AuthenticationService.currentUser.getValue().email != '') {
         this.islogin = true;
+        this.currentUser = localStorage.getItem('loggedUser');
+        this.currentUser = JSON.parse(this.currentUser);
+        if (this.currentUser.isAdmin) {
+          this.isadmin = true;
+        }
+        else {
+          this.isadmin = false;
+        }
       }
       else {
         this.islogin = false;
       }
     })
-    this.currentUser=localStorage.getItem('loggedUser');
-    this.currentUser=JSON.parse(this.currentUser);
+
   }
   isLogOut() {
     this._AuthenticationService.logout();
   }
-  isadmin:boolean=false
+
 
 }

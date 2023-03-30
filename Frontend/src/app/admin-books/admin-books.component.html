@@ -16,15 +16,15 @@
         <tbody>
             <tr *ngFor='let book of admin_books'>
                 <td class="text">{{book.id}}</td>
-                <td><img [src]="book.photo"class="image"/></td>
+                <td><img [src]="book.photo" class="image" /></td>
                 <td>{{book.Name}}</td>
                 <td>{{book.CategoryId}}</td>
                 <td>{{book.AuthorId}}</td>
 
                 <td>
                     <button class="btn  btn-warning mr-4" (click)="onEdit(book)" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal2">
-                        <!-- <i class="fa fa-edit"></i> -->Edit
+                        data-bs-target="#exampleModal2">Edit
+                        <!-- <i class="fa fa-edit"></i> -->
                     </button>
                     <button class="btn  btn-danger ml-2" (click)="ondelete([book._id])">
                         <!-- <i class="fa fa-remove "></i> -->Delete
@@ -70,19 +70,23 @@
 
                     <div class="form-group">
                         <label for="name">Book Name</label>
-                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name" id="name">
+                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name"
+                            id="name">
                     </div>
                     <div class="form-group">
                         <label for="name">photo</label>
-                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name" id="name">
+                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name"
+                            id="name">
                     </div>
                     <div class="form-group">
                         <label for="name">category id</label>
-                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name" id="name">
+                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name"
+                            id="name">
                     </div>
                     <div class="form-group">
                         <label for="name">Author id</label>
-                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name" id="name">
+                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name"
+                            id="name">
                     </div>
                     <div class="d-flex ">
                         <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
@@ -94,4 +98,3 @@
         </div>
     </div>
 </div>
-

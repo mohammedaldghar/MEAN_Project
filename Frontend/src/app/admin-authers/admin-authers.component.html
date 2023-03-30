@@ -1,1 +1,115 @@
-<p>admin-authers works!</p>
+<div class="container">
+    <div class="text-right mt-3 "><i class="fa-solid fa-circle-plus fa-2xl mt-4 " role="button" data-bs-toggle="modal"
+            data-bs-target="#exampleModal1"></i></div>
+
+    <table class="table table-bordered mt-4 ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Photo</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>Data of Birth</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let author of admin_authors'>
+                <td class="text">{{author.auth_ID}}</td>
+                <td><img [src]="author.photo" class="image" /></td>
+                <td>{{author.firstName}}</td>
+                <td>{{author.lastName}}</td>
+                <td>{{author.DateOfBirth}}</td>
+
+                <td>
+                    <button class="btn  btn-warning mr-4" (click)="onEdit(author)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2">
+                        <!-- <i class="fa fa-edit"></i> -->Edit
+                    </button>
+                    <button class="btn  btn-danger ml-2" (click)="ondelete([author._id])">
+                        <!-- <i class="fa fa-remove "></i> -->Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">Add new Book</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="card m-5" style="padding: 20px;">
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+                    <div class="form-group">
+                        <label for="photo">photo</label>
+                        <input type="text" #photo [(ngModel)]="authorToUpdate.photo" class="form-control" name="photo"
+                            id="photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" #firstName [(ngModel)]="authorToUpdate.firstName" class="form-control"
+                            name="firstName" id="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" #lastName [(ngModel)]="authorToUpdate.lastName" class="form-control"
+                            name="lastName" id="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="DateOfBirth">Date Of Birth</label>
+                        <input type="text" #DateOfBirth [(ngModel)]="authorToUpdate.DateOfBirth" class="form-control"
+                            name="DateOfBirth" id="DateOfBirth">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-primary mr-4 ">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel2">Edit Book</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body " style="padding: 20px;">
+
+                <form #updateForm="ngForm" (ngSubmit)='updateAuthor()'>
+
+                    <div class="form-group">
+                        <label for="photo">photo</label>
+                        <input type="text" #photo [(ngModel)]="authorToUpdate.photo" class="form-control" name="photo"
+                            id="photo">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" #firstName [(ngModel)]="authorToUpdate.firstName" class="form-control"
+                            name="firstName" id="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" #lastName [(ngModel)]="authorToUpdate.lastName" class="form-control"
+                            name="lastName" id="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="DateOfBirth">Date Of Birth</label>
+                        <input type="text" #DateOfBirth [(ngModel)]="authorToUpdate.DateOfBirth" class="form-control"
+                            name="DateOfBirth" id="DateOfBirth">
+                    </div>
+                    <div class="d-flex ">
+                        <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
+                        <div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

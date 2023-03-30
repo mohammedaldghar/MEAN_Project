@@ -48,10 +48,8 @@ export class AdminBooksComponent {
   }
   onEdit(book: Book) {
     this.bookToUpdate = book;
-    //console.log(this.categoryToUpdate);
   }
   updateBook() {
-    // console.log(this.categoryToUpdate)
     this._BookService.update(this.bookToUpdate).subscribe(
       (resp) => {
         console.log("resp")
@@ -63,5 +61,6 @@ export class AdminBooksComponent {
     )
 
   }
+
 
 }

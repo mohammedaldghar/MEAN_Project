@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
-*{
+
+* {
     margin: 0px;
     box-sizing: border-box;
     font-family: 'Alkatra', sans-serif;
-    
+
 }
-.header{
-    background-image:linear-gradient(rgba(0,0,0,0.2) ,rgba(0,0,0,0.2)) ,
-    url('../../assets/background.jpg');
+
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        url('../../assets/background.jpg');
     width: 90%;
     left: 5%;
     height: 80vh;
@@ -15,8 +17,8 @@
     background-size: cover;
     position: relative;
 }
-.wave
-{
+
+.wave {
     position: absolute;
     bottom: -98px;
     /* height:50vh; */
@@ -24,48 +26,54 @@
 }
 
 .middle {
-height: 80vh;
-width: 80%;
-display: flex;
-justify-content: start;
-align-items: center;
+    height: 80vh;
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
-.middle h1{
+
+.middle h1 {
     font-size: 60px;
 }
 
 
-.imgs-blocks{
+.imgs-blocks {
     width: 40px;
     /* float: left; */
 }
 
-img:hover{
+img:hover {
     cursor: pointer;
-    opacity:0.5;
+    opacity: 0.5;
 }
 
-h2{width: 70%;
-    color:white ;
+h2 {
+    width: 70%;
+    color: white;
     border: 1px solid hsl(33, 92%, 72%);
     background-color: #f9be75;
     border-radius: 20px;
-   left: 15%;
-   position: relative;
+    left: 15%;
+    position: relative;
 }
-.cat-bord{
+
+.cat-bord {
     margin-bottom: 5px;
-    border:1px solid black ;
+    border: 1px solid black;
     border-radius: 20px;
     padding-left: 35%;
 }
-.cat-bord h3{
-    color:black;
+
+.cat-bord h3 {
+    color: black;
 }
-.cat-bord h3:hover{
-cursor: pointer;
-color:#b76a0d ;
+
+.cat-bord h3:hover {
+    cursor: pointer;
+    color: #b76a0d;
 }
+
 /* +++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 /* #icon-book {
@@ -80,19 +88,20 @@ float: left;
     width: 20px;
     float: left;
 } */
-#welcome{
+#welcome {
     color: rgb(245, 237, 237);
     /* font-size:xx-large; */
-    font-style:normal;
-    font-weight:lighter;
-    font-family:'Times New Roman', Times, serif;
-}
-.span1{
-    color: rgb(241, 241, 17);
-  
+    font-style: normal;
+    font-weight: lighter;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-#line{
+.span1 {
+    color: rgb(241, 241, 17);
+
+}
+
+#line {
     margin-top: 0;
     color: black;
 }

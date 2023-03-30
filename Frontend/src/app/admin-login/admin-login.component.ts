@@ -28,16 +28,16 @@ export class AdminLoginComponent {
 
         if (response.message == "Welcome") {
 
-          localStorage.setItem('userToken', response.token)
-          this._AuthenticationService.saveCurrentUser();
-          this.user = this._AuthenticationService.currentUser.value
-          //console.log(this.user?.isAdmin)
+          this.user = response.user;
+          console.log(this.user)
 
-          console.log("noooooor");
-
-          console.log(this._AuthenticationService.currentUser.value.isAdmin)
-          if (this._AuthenticationService.currentUser.value.isAdmin) {
+          if (this.user.isAdmin) {
+            localStorage.setItem('userToken', response.token)
+            localStorage.setItem('loggedUser', JSON.stringify(response.user))
+            
+            this._AuthenticationService.saveCurrentUser();
             this._Router.navigate(['/admin-category'])
+            
           }
           else {
             this._Router.navigate(['/admin'])
