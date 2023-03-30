@@ -1,4 +1,58 @@
-<nav class="navbar navbar-expand-lg backColor">
+
+<nav *ngIf="!islogin" class="navbar navbar-expand-lg ">
+  <div class="w-100 d-flex justify-content-between">
+    <div class=" d-flex justify-content-between">
+      <a  class="navbar-brand m-1" routerLink='/' style="float:left">
+        <h4><span id="span1">good<span id="span2">reads</span></span></h4>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ml-5">
+
+          <li class="nav-item">
+            <a  class="nav-link   " routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link  " routerLink="/categories">Categories</a>
+          </li>
+          
+          <li class="nav-item">
+            <a  class="nav-link " [routerLink]='"/authors"'>Authors</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link " [routerLink]='"/about"'>About Us</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link  " >Terms & Conditions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class=" d-flex justify-content align-items-center">
+      <div class="row">
+        <div class="col">
+          <div class="w-100 d-flex justify-content align-items-center">
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <button class="btn bg-gg btn-dark "  routerLink="login">log in</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn bg-gg btn-dark "  routerLink="signup">sign up</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav *ngIf="islogin" class="navbar navbar-expand-lg backColor">
   <div class="w-100 d-flex justify-content-between">
     <div class=" d-flex justify-content-between">
       <a class="navbar-brand" [routerLink]="''"><img src="../../assets/msg704385414-285121.jpg" alt="" class="logo" />
@@ -43,12 +97,6 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <i *ngIf="!islogin" class="fa-regular fa-user text-light "></i>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!islogin" class="nav-link  text-light" routerLink="login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!islogin" class="nav-link  text-light" routerLink="signup">sign up</a>
         </li>
         <li class="nav-item">
           <a *ngIf="islogin" routerLink="logout" (click)="isLogOut()"><i

@@ -1,3 +1,33 @@
+#span1{
+    color: rgb(227, 227, 113);
+  
+}
+#span2{
+    color: rgb(185, 150, 24);
+  
+}
+.bg-gg{
+    background-color:#AB8B64;
+    color: white;
+    margin:2px;
+}
+.bg-gg:hover{
+    background-color:white;
+    color: #AB8B64;
+}
+.nav-item .nav-link{
+    position: sticky;
+    bottom: 0;
+    color: rgb(0, 0, 0);
+    font-size: large;
+    font-style: normal;
+    font-weight:bold;
+}
+.nav-item .nav-link:hover{
+    transition: 1s;
+    color: #f9be75;
+}
+
 .logo{     /*User Photo and Logo photo */
     width: 60px;
     height: 40px;

@@ -21,6 +21,7 @@ export class BookService {
   getBookByTd(id:any):Observable<any>{
     return this.http.get<any>('http://localhost:5000/book/'+id,{headers: new HttpHeaders().set('Authorization', 'secret token')})
   }
+  
   // addBookToCurrentReadingList(userId:any,bookId:any){
   //   console.log(userId,bookId)
   //   this.http.delete('http://localhost:5000/user/'+userId+'/editWantToReadBook',{body:{'book':bookId}})

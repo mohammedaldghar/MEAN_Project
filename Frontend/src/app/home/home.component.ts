@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   authors!:any[];
   categories!:any[];
   books!:any[];
+  popularBooks!:any[0];
   constructor(private router:Router,private authorService:AuthorService,
     private categoriesService:CategoriesService,private bookService:BookService){
     this.authorService.getAuthors().subscribe((author) => {
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
     this.bookService.getBooks().subscribe((book) => {
       this.books = book;
     });
+      
   }
 ngOnInit():void{}
 
