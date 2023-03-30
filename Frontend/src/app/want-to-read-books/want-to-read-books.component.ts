@@ -6,11 +6,11 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./want-to-read-books.component.css']
 })
 export class Want_to_readComponent {
-  want!:any[];
+  allBooks!:any[];
   constructor(private userserv:UserService){
 
     this.userserv.getWantToReadBooks('dfagghsr64446s54f6s').subscribe(book=>{
-      this.want=book;
+      this.allBooks=book;
         });
 
 

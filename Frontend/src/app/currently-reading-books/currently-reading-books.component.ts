@@ -8,12 +8,12 @@ import { UserService } from '../services/user.service';
 })
 export class Curntlty_readingComponent {
 
-  current!:any[];
+  allBooks!:any[];
 
   constructor(private  userserv:UserService){
 
     this.userserv.getCurrentlyBooks('dfagghsr64446s54f6s').subscribe(book=>{
-      this.current=book;
+      this. allBooks=book;
         });
 
   }

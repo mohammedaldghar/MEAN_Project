@@ -7,12 +7,12 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./reading-books.component.css']
 })
 export class ReadComponent {
-  read!:any[];
+  allBooks!:any[];
 
   constructor(private userserv:UserService){
 
     this.userserv.getReadBooks('dfagghsr64446s54f6s').subscribe(book=>{
-      this.read=book;
+      this.allBooks = book;
         });
   }
 
