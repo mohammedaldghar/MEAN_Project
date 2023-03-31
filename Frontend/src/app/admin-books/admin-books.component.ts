@@ -50,15 +50,7 @@ export class AdminBooksComponent {
     this.bookToUpdate = book;
   }
   updateBook() {
-    this._BookService.update(this.bookToUpdate).subscribe(
-      (resp) => {
-        console.log("resp")
-      },
-      (err) => {
-        console.log("err");
-
-      }
-    )
+    this._BookService.update(this.bookToUpdate)
 
   }
 

@@ -1,8 +1,7 @@
-
 <nav *ngIf="!islogin" class="navbar navbar-expand-lg ">
   <div class="w-100 d-flex justify-content-between">
     <div class=" d-flex justify-content-between">
-      <a  class="navbar-brand m-1" routerLink='/' style="float:left">
+      <a class="navbar-brand m-1" routerLink='/' style="float:left">
         <h4><span id="span1">good<span id="span2">reads</span></span></h4>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -14,20 +13,20 @@
         <ul class="navbar-nav mr-auto ml-5">
 
           <li class="nav-item">
-            <a  class="nav-link   " routerLink="/home">Home</a>
+            <a class="nav-link   " routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a  class="nav-link  " routerLink="/categories">Categories</a>
+            <a class="nav-link  " routerLink="/categories">Categories</a>
           </li>
-          
+
           <li class="nav-item">
-            <a  class="nav-link " [routerLink]='"/authors"'>Authors</a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link " [routerLink]='"/about"'>About Us</a>
+            <a class="nav-link " [routerLink]='"/authors"'>Authors</a>
           </li>
           <li class="nav-item">
-            <a  class="nav-link  " >Terms & Conditions</a>
+            <a class="nav-link " [routerLink]='"/about"'>About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  ">Terms & Conditions</a>
           </li>
         </ul>
       </div>
@@ -42,10 +41,10 @@
       </div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <button class="btn bg-gg btn-dark "  routerLink="login">log in</button>
+          <button class="btn bg-gg btn-dark " routerLink="login">log in</button>
         </li>
         <li class="nav-item">
-          <button class="btn bg-gg btn-dark "  routerLink="signup">sign up</button>
+          <button class="btn bg-gg btn-dark " routerLink="signup">sign up</button>
         </li>
       </ul>
     </div>
@@ -69,17 +68,17 @@
             <a class="nav-link  text-light" routerLink="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a *ngIf="islogin && !isadmin" class="nav-link  text-light" routerLink="/categories">Categories</a>
-            <a *ngIf="islogin && isadmin" class="nav-link  text-light" routerLink="/admin-category">Categories</a>
+            <a *ngIf="!isadmin" class="nav-link  text-light" routerLink="/categories">Categories</a>
+            <a *ngIf="isadmin" class="nav-link  text-light" routerLink="/admin-category">Categories</a>
           </li>
 
           <li class="nav-item">
-            <a *ngIf="islogin && !isadmin" class="nav-link  text-light" [routerLink]="'/books'">Books</a>
-            <a *ngIf="islogin && isadmin" class="nav-link  text-light" [routerLink]="'/admin-books'">Books</a>
+            <a *ngIf=" !isadmin" class="nav-link  text-light" [routerLink]="'/books'">Books</a>
+            <a *ngIf=" isadmin" class="nav-link  text-light" [routerLink]="'/admin-books'">Books</a>
           </li>
           <li class="nav-item">
-            <a *ngIf="islogin && !isadmin" class="nav-link  text-light" [routerLink]='"/authors"'>Authors</a>
-            <a *ngIf="islogin && isadmin" class="nav-link  text-light" [routerLink]='"/admin-authors"'>Authors</a>
+            <a *ngIf="!isadmin" class="nav-link  text-light" [routerLink]='"/authors"'>Authors</a>
+            <a *ngIf="isadmin" class="nav-link  text-light" [routerLink]='"/admin-authors"'>Authors</a>
           </li>
         </ul>
       </div>
@@ -89,8 +88,9 @@
       <div class="row">
         <div class="col">
           <div class="w-100 d-flex justify-content align-items-center">
-            <img *ngIf="islogin" class="logo mx-3 " src="{{currentUser.photo}}" />
-            <a *ngIf="islogin" routerLink="all" class="text-light text-decoration-none ">{{currentUser.firstName}} {{currentUser.lastName}}</a>
+            <img class="logo mx-3 " src="{{currentUser.photo}}" />
+            <a routerLink="all" class="text-light text-decoration-none ">{{currentUser.firstName}}
+              {{currentUser.lastName}}</a>
           </div>
         </div>
       </div>
@@ -106,4 +106,3 @@
     </div>
   </div>
 </nav>
- 

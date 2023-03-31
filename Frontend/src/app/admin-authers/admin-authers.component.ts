@@ -53,7 +53,7 @@ export class AdminAuthersComponent {
         console.log("resp")
       },
       (err) => {
-        console.log("err");
+        console.log(err.message);
 
       }
     )

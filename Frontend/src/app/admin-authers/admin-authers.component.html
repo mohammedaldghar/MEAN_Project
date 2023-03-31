@@ -50,17 +50,17 @@
                     </div>
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" #firstName [(ngModel)]="authorToUpdate.firstName" class="form-control"
+                        <input type="text" #firstName (ngModel)="authorToUpdate.firstName" class="form-control"
                             name="firstName" id="firstName">
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" #lastName [(ngModel)]="authorToUpdate.lastName" class="form-control"
+                        <input type="text" #lastName (ngModel)="authorToUpdate.lastName" class="form-control"
                             name="lastName" id="lastName">
                     </div>
                     <div class="form-group">
                         <label for="DateOfBirth">Date Of Birth</label>
-                        <input type="text" #DateOfBirth [(ngModel)]="authorToUpdate.DateOfBirth" class="form-control"
+                        <input type="text" #DateOfBirth (ngModel)="authorToUpdate.DateOfBirth" class="form-control"
                             name="DateOfBirth" id="DateOfBirth">
                     </div>
                     <div class="form-group">
