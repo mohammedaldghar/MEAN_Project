@@ -6,6 +6,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Rating</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -13,6 +14,7 @@
             <tr *ngFor='let catge of admin_categories'>
                 <td class="text">{{catge.id}}</td>
                 <td>{{catge.name}}</td>
+                <td>{{catge.Rating}}</td>
                 <td>
                     <button class="btn  btn-warning mr-4" (click)="onEdit(catge)" data-bs-toggle="modal"
                         data-bs-target="#exampleModal2">
@@ -42,6 +44,10 @@
                         <input type="text" #name [(ngModel)]="categoryToUpdate.name" class="form-control" name="name"
                             id="name">
                     </div>
+                    <div class="form-group">
+                        <label for="Rating">Rating</label>
+                        <input type="text" #Rating [(ngModel)]="categoryToUpdate.Rating" class="form-control" name="Rating" max="5" id="Rating">
+                    </div>
                     <div class="d-flex ">
                         <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
                         <div><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -66,6 +72,10 @@
                         <label for="name">Category Name </label>
                         <input type="text" (ngModel)="name" name="name" id="name" class="form-control"
                             placeholder="Category Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Rating">Rating</label>
+                        <input type="text" #Rating [(ngModel)]="categoryToUpdate.Rating" class="form-control" name="Rating" id="Rating">
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Add" class="btn btn-primary mr-4 ">

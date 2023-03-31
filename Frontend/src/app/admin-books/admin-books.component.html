@@ -10,6 +10,7 @@
                 <th>Name</th>
                 <th>CategoryId</th>
                 <th>AuthorId</th>
+                <th>Rating</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{book.Name}}</td>
                 <td>{{book.CategoryId._id}}</td>
                 <td>{{book.AuthorId._id}}</td>
+                <td>{{book.Rating}}</td>
 
                 <td>
                     <button class="btn  btn-warning mr-4" (click)="onEdit(book)" data-bs-toggle="modal"
@@ -85,6 +87,10 @@
                         <label for="AuthorId">Author id</label>
                         <input type="text" #AuthorId [(ngModel)]="bookToUpdate.AuthorId" class="form-control" name="AuthorId"
                             id="AuthorId">
+                    </div>
+                    <div class="form-group">
+                        <label for="Rating">Rating</label>
+                        <input type="text" #Rating [(ngModel)]="bookToUpdate.Rating" class="form-control" name="Rating" id="Rating">
                     </div>
                     <div class="d-flex ">
                         <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
