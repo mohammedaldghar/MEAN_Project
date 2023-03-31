@@ -25,6 +25,8 @@ import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.c
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminBooksComponent } from './admin-books/admin-books.component';
 import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { TermsComponent } from './terms/terms.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
     Want_to_readComponent,
     AdminLoginComponent,
     AdminBooksComponent,
-    AdminAuthersComponent
+    AdminAuthersComponent,
+    AboutusComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

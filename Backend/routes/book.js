@@ -28,6 +28,26 @@ router.get("/:id", (req, res) => {
     .populate("Reviews.userId");
 });
 
+
+// ---------------------------------------- work popular
+/* get popular book */
+
+router.get("/popularBooks", (req, res) => {
+  // BookModel.find({Rating:{$gte:4}}, (err, books) => {
+  BookModel.find( (err, books) => {
+    if (!err) return res.send(books);
+    res.status(500).json(err);
+  }).sort({Rating:-1}).limit(5)
+    .populate("AuthorId")
+    .populate("CategoryId")
+    .populate("Reviews.userId");
+});
+// ---------------------------------------- work popular
+
+
+
+
+
 /* git book by category id */
 
 router.get("/categorybook/:id", (req, res) => {

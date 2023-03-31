@@ -27,9 +27,9 @@ export class AdminCategoryComponent {
       
     });
   }
-  updateForm = new NgForm({
-        Rating: new FormControl(null, [ Validators.max(5)])
-})
+//   updateForm = new NgForm({
+//         Rating: new FormControl(null, [ Validators.max(5)])
+// })
 
   register(registerForm:any) {
     this._CategoriesService.registerCategory(registerForm.value).subscribe(

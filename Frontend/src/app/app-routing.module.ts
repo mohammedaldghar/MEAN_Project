@@ -19,6 +19,8 @@ import { Want_to_readComponent } from './want-to-read-books/want-to-read-books.c
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminBooksComponent } from './admin-books/admin-books.component';
 import { AdminAuthersComponent } from './admin-authers/admin-authers.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,6 +42,8 @@ const routes: Routes = [
   { path: 'read', component: ReadComponent },
   { path: 'current', component: Curntlty_readingComponent },
   { path: 'wantToRead', component: Want_to_readComponent },
+  { path: 'about', component: AboutusComponent},
+  { path: 'terms', component: TermsComponent},
   { path: "**", component: NotFoundPageComponent }
 ];
 
