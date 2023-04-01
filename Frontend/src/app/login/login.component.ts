@@ -14,7 +14,7 @@ export class LoginComponent {
 
   user!: User;
   error: string = '';
-
+  href: string = "";
   constructor(private _AuthenticationService: AuthenticationService, private _Router: Router) { }
 
   loginForm = new FormGroup({
@@ -26,12 +26,13 @@ export class LoginComponent {
     this._AuthenticationService.login(loginForm.value).subscribe({
       next: (response) => {
         if (response.message == "Welcome") {
-          console.log(response.user)
           localStorage.setItem('userToken', response.token)
           localStorage.setItem('loggedUser',JSON.stringify(response.user))
+          this.href = this._Router.url;
+          localStorage.setItem('path', this.href)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value
-          this._Router.navigate(['/home'])
+          this._Router.navigate(['/all'])
         }
       },
       error: (err) => {

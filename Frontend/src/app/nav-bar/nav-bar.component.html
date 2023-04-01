@@ -65,20 +65,20 @@
         <ul class="navbar-nav mr-auto">
 
           <li class="nav-item">
-            <a class="nav-link  text-light" routerLink="/home">Home</a>
+            <a *ngIf="uesrpath" class="nav-link  text-light" routerLink="/all">Home</a>
           </li>
           <li class="nav-item">
-            <a *ngIf="!isadmin" class="nav-link  text-light" routerLink="/categories">Categories</a>
-            <a *ngIf="isadmin" class="nav-link  text-light" routerLink="/admin-category">Categories</a>
+            <a *ngIf="uesrpath" class="nav-link  text-light" routerLink="/categories">Categories</a>
+            <a *ngIf="isadmin  && !uesrpath" class="nav-link  text-light" routerLink="/admin-category">Categories</a>
           </li>
 
           <li class="nav-item">
-            <a *ngIf=" !isadmin" class="nav-link  text-light" [routerLink]="'/books'">Books</a>
-            <a *ngIf=" isadmin" class="nav-link  text-light" [routerLink]="'/admin-books'">Books</a>
+            <a *ngIf="uesrpath" class="nav-link  text-light" [routerLink]="'/books'">Books</a>
+            <a *ngIf=" isadmin  && !uesrpath" class="nav-link  text-light" [routerLink]="'/admin-books'">Books</a>
           </li>
           <li class="nav-item">
-            <a *ngIf="!isadmin" class="nav-link  text-light" [routerLink]='"/authors"'>Authors</a>
-            <a *ngIf="isadmin" class="nav-link  text-light" [routerLink]='"/admin-authors"'>Authors</a>
+            <a *ngIf="uesrpath" class="nav-link  text-light" [routerLink]='"/authors"'>Authors</a>
+            <a *ngIf="isadmin  && !uesrpath" class="nav-link  text-light" [routerLink]='"/admin-authors"'>Authors</a>
           </li>
         </ul>
       </div>
