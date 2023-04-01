@@ -33,7 +33,7 @@
             <!-- Gallery -->
             <div class="container">
               <div class="row mb-3">
-                <div *ngFor="let author of authors" class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <div *ngFor="let author of authors.slice(0, 6)" class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                   <div class="card">
                     <img [routerLink]="'/authors/'+author._id"
                     [src]="author.photo"
@@ -53,7 +53,7 @@
             <div class="desc">
             <h2 class="text-center mb-4">popular categories</h2>
             <div class="row mb-3">
-              <div *ngFor="let category of categories" class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+              <div *ngFor="let category of categories.slice(0, 6)" class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                 <div class="cat-bord ms-3">
                   <a [routerLink]="'/category/'+category._id" class="text-dark text-decoration-none"><h3>{{category.name}}</h3></a>
                 </div>
