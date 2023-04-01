@@ -1,6 +1,8 @@
 import { Component,OnChanges,OnInit, SimpleChanges } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-specific-book',
   templateUrl: './specific-book.component.html',
@@ -13,7 +15,7 @@ export class SpecificBookComponent implements OnInit,OnChanges{
 mycoment: any;
 messages=false;
 currentUser!:any;
-  constructor(private bookService: BookService,private activetedRoute: ActivatedRoute){
+  constructor(private bookService: BookService,private activetedRoute: ActivatedRoute,private router: Router,private location: Location){
     this.activetedRoute.paramMap.subscribe(param=>{
       bookService.getBookByTd(param.get('id')).subscribe(book=>{
         this.book=book;
@@ -88,6 +90,17 @@ currentUser!:any;
 addComment(bookId:any,userId:any,comment:any){
   this.bookService.addComment(bookId,userId,comment.value).subscribe(book=>{
     console.log("Comment Added");
+  });
+  this.refresh();
+}
+disappeare():void{
+this.messages=false;
+}
+
+refresh(): void {
+  this.router.navigateByUrl("/refresh", { skipLocationChange: true }).then(() => {
+  console.log(decodeURI(this.location.path()));
+  this.router.navigate([decodeURI(this.location.path())]);
   });
 }
 

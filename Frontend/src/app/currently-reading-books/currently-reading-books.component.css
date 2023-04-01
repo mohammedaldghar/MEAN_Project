@@ -1,12 +1,6 @@
-nav{
-
-  background-color: #774f38;
-  
-  
-  }
-  
-  a{
-  
+    
+    a{
+    
       color: white;
   }
   
@@ -35,11 +29,11 @@ nav{
   
   #d3{
   
-    background-color: #AB8B64;
-    width:  170px;
-    height: 700px;
-    padding-top:5%;
-    margin-top: 4%;
+  background-color: #AB8B64;
+  width:  170px;
+  height: 700px;
+  padding-top:5%;
+  margin-top: 4%;
   
   
   }
@@ -56,19 +50,16 @@ nav{
    padding-bottom: 5px;
    
   }
-  
-   table, th, td {
-    border:1px solid black;
-    
-  
-  } 
+
+  table,th,td{
+    border:  1px solid black;
+  }
   .center{
-  
-  
-    margin-left: auto;
+
+    margin-left: 250px;
     margin-right: auto;
     text-align: center;
-    margin-top: -550px; 
+    margin-top: -1120px; 
     width: 76%;
     height: 100%;
     border:3px solid black;
@@ -128,14 +119,21 @@ nav{
   
    
     border: #774f38 solid red;
-    width: 50%;
-    
-    padding:4%;
-    margin-top: -130%;
-    margin-left: -1%;
+    width: 40px;
+    padding:1%;
+    margin-top: -250%;
+    margin-left: 4%;
   } 
+  .pos{
+    margin-top: 500px;
+  }
 
-  #l{
+  ul li {
+
+    list-style-type: none;
+    
+   }
+   #l{
 
     margin-bottom: 10px;
     padding: 1%;
@@ -150,22 +148,10 @@ nav{
     text-align: left;
   }
 
-  ul li {
-
-    list-style-type: none;
-    
-   }
-
-   #read{
+  #read{
 
 
     color: #774f38;
     -webkit-text-stroke-width: 3px;
-    margin-top:400px;
-  }
-
-  .dropdown-item:hover{
-color: black;
-transform: 3px;
-
+    margin-top: 500px;
   }

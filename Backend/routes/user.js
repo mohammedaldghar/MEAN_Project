@@ -115,7 +115,7 @@ router.get("/:id/currentReading", (req, res) => {
         books: user.readingBooks,
       };
       if (!error) {
-        return res.status(200).send(data);
+        return res.status(200).send(data.books);
       } else {
         console.log(error);
         return;
@@ -133,7 +133,7 @@ router.get("/:id/wantToRead", (req, res) => {
         books: user.wantToReadBooks,
       };
       if (!error) {
-        return res.status(200).send(data);
+        return res.status(200).send(data.books);
       } else {
         console.log(error);
         return;
@@ -151,7 +151,7 @@ router.get("/:id/read", (req, res) => {
         books: user.readBooks,
       };
       if (!error) {
-        return res.status(200).send(data);
+        return res.status(200).send(data.books);
       } else {
         console.log(error);
         return;
@@ -167,12 +167,13 @@ router.get("/:id/allBooks", async (req, res) => {
     .populate("readingBooks")
     .populate("wantToReadBooks")
     .populate("readBooks");
-  console.log(currentlyUser)
   const allBooks = [
     ...currentlyUser.readingBooks,
-    ...currentlyUser.wantToReadBooks,
-    ...currentlyUser.readBooks,
-  ];
+  //   ...currentlyUser.wantToReadBooks,
+  //   ...currentlyUser.readBooks,
+   ];
+   allBooks.push(...currentlyUser.readBooks)
+   allBooks.push(...currentlyUser.wantToReadBooks)
   res.status(200).send(allBooks);
 });
 

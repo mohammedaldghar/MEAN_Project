@@ -67,7 +67,7 @@
             <div class="desc">
             <!-- <img class="imgs-blocks" src="../../assets/book-square.png"> -->
             <h2 class="text-center mb-4">popular books</h2>
-            <div *ngFor="let book of books" class=" col-md-12 mb-4 mb-lg-0">
+            <div *ngFor="let book of popularBooks" class=" col-md-12 mb-4 mb-lg-0">
               <img [routerLink]="'/books/'+book._id"
                 [src]="book.photo"
                 class="shadow-1-strong rounded mb-4" alt="{{book.Name}}" style="width:100px;float: left;margin-left: 5px;"/>

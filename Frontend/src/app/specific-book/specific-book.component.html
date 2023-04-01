@@ -54,8 +54,8 @@
         Delete From My List</a
       >
     </p>
-    <p class="text-primary fontSize" *ngIf="messages">
-      Success <i class="fa-regular fa-circle-xmark"></i>
+    <p class="text-success fontSize" *ngIf="messages">
+      Success <i (click)="disappeare()" class="fa-regular fa-circle-xmark"></i>
     </p>
   </div>
 </div>

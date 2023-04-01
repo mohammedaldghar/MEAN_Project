@@ -13,16 +13,16 @@ export class UserService {
   }
 
   getCurrentlyBooks(id:any):Observable<any>{
-    return this.http.get('http://localhost:5000/user/'+id+'currentReading')
+    return this.http.get('http://localhost:5000/user/'+id+'/currentReading')
   }
   getReadBooks(id:any):Observable<any>{
-    return this.http.get('http://localhost:5000/user/'+id+'wantToRead')
+    return this.http.get('http://localhost:5000/user/'+id+'/wantToRead')
   }
   getWantToReadBooks(id:any):Observable<any>{
-    return this.http.get('http://localhost:5000/user/'+id+'read')
+    return this.http.get('http://localhost:5000/user/'+id+'/read')
   }
   getAllBooks(id:any):Observable<any[]>{
-    return this.http.get<any[]>('http://localhost:5000/user/641f02e896ef9ad92a0d17de/allBooks',{headers: new HttpHeaders().set('Authorization', 'secret token')})
+    return this.http.get<any[]>('http://localhost:5000/user/'+id+'/allBooks',{headers: new HttpHeaders().set('Authorization', 'secret token')})
   }
   
   }
