@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Rating">Rating</label>
-                        <input type="text" #Rating [(ngModel)]="categoryToUpdate.Rating" class="form-control" name="Rating" max="5" id="Rating">
+                        <input type="number" #Rating [(ngModel)]="categoryToUpdate.Rating" class="form-control" name="Rating" max="5" id="Rating">
                     </div>
                     <div class="d-flex ">
                         <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="Rating">Rating</label>
-                        <input type="text" #Rating [(ngModel)]="categoryToUpdate.Rating" class="form-control" name="Rating" id="Rating">
+                        <input type="number" #Rating [(ngModel)]="categoryToUpdate.Rating" max="5" class="form-control" name="Rating" id="Rating">
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Add" class="btn btn-primary mr-4 ">

@@ -25,7 +25,7 @@ export class BookService {
     return this.http.get<any[]>('http://localhost:5000/book/popularBooks/',{headers: new HttpHeaders().set('Authorization', 'secret token')})
   }
   
-  
+
   deleteFromCurrentlyReadingList(userId: any, bookId: any): Observable<any> {
     return this.http.delete('http://localhost:5000/user/' + userId + '/editCurrentlyReadingBook', { body: { 'book': bookId } });
   }
@@ -48,7 +48,7 @@ export class BookService {
     return this.http.post('http://localhost:5000/book/' + bookId + '/comment', { 'userId': userId, 'Comment': comment });
   }
 
-  registerBook(bookData: Book) {
+  registerBook(bookData: any) {
     return this.http.post('http://localhost:5000/book/', bookData)
   }
   update(book: Book) {

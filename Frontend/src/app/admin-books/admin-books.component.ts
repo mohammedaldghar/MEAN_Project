@@ -36,14 +36,14 @@ export class AdminBooksComponent {
     this.myImg = imageInput.target.files[0]
   }
 
-  register(registerForm: FormGroup) {
+  register(registerForm: any) {
     let myFormData = new FormData();
     myFormData.append('photo', this.myImg, this.myImg.name);
     myFormData.append('name', registerForm.controls["name"].value);
     myFormData.append('photo', this.myImg, this.myImg.name);
     myFormData.append('photo', this.myImg, this.myImg.name);
 
-    this._BookService.registerBook(registerForm.value).subscribe(
+    this._BookService.registerBook(myFormData).subscribe(
       (resp) => {
         console.log("resp")
       },

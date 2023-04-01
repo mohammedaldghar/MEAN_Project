@@ -4,7 +4,6 @@ const user = require("../models/user");
 const book = require("../models/book");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const multer = require('multer')
 const TOKEN_KEY = process.env.TOKEN_KEY || "Dghar";
 //Add new user
 
