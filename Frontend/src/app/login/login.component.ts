@@ -32,7 +32,7 @@ export class LoginComponent {
           localStorage.setItem('path', this.href)
           this._AuthenticationService.saveCurrentUser();
           this.user = this._AuthenticationService.currentUser.value
-          this._Router.navigate(['/all'])
+          this._Router.navigate(['/home'])
         }
       },
       error: (err) => {

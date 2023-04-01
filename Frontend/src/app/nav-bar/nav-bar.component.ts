@@ -12,6 +12,7 @@ export class NavBarComponent {
   islogin: boolean = false;
   isadmin: boolean = false;
   uesrpath: boolean = false;
+  adminpath: boolean = false;
   constructor(private _AuthenticationService: AuthenticationService) {
 
     this._AuthenticationService.currentUser.subscribe(() => {
@@ -27,7 +28,13 @@ export class NavBarComponent {
         }
         if (localStorage.getItem('path') == '/login') {
           this.uesrpath = true;
-        } 
+        }
+        if (localStorage.getItem('path') == '/admin') {
+          
+          this.adminpath = true;
+          console.log(this.adminpath)
+
+        }
       }
       else {
         this.islogin = false;

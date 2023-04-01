@@ -14,7 +14,7 @@ export class AdminLoginComponent {
 
   user!: User;
   error: string = '';
-
+  href: string = '';
   constructor(private _AuthenticationService: AuthenticationService, private _Router: Router) { }
 
   loginForm = new FormGroup({
@@ -34,7 +34,8 @@ export class AdminLoginComponent {
           if (this.user.isAdmin) {
             localStorage.setItem('userToken', response.token)
             localStorage.setItem('loggedUser', JSON.stringify(response.user))
-            
+            this.href = this._Router.url;
+            localStorage.setItem('path', this.href)
             this._AuthenticationService.saveCurrentUser();
             this._Router.navigate(['/admin-category'])
             

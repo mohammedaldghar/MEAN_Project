@@ -51,7 +51,7 @@
   </div>
 </nav>
 
-<nav *ngIf="islogin" class="navbar navbar-expand-lg backColor">
+<nav *ngIf="islogin ||islogin && uesrpath || islogin && adminpath " class="navbar navbar-expand-lg backColor">
   <div class="w-100 d-flex justify-content-between">
     <div class=" d-flex justify-content-between">
       <a class="navbar-brand" [routerLink]="''"><img src="../../assets/msg704385414-285121.jpg" alt="" class="logo" />

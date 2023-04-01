@@ -23,6 +23,7 @@ export class AdminBooksComponent {
     Reviews: [],
     __v: 0
   }
+  myImg!: File;
 
   constructor(private _BookService: BookService, private _AuthenticationService: AuthenticationService) {
     this._BookService.getBooks().subscribe((book) => {
@@ -31,7 +32,17 @@ export class AdminBooksComponent {
     });
   }
 
-  register(registerForm: any) {
+  uploadimg(imageInput: any) {
+    this.myImg = imageInput.target.files[0]
+  }
+
+  register(registerForm: FormGroup) {
+    let myFormData = new FormData();
+    myFormData.append('photo', this.myImg, this.myImg.name);
+    myFormData.append('name', registerForm.controls["name"].value);
+    myFormData.append('photo', this.myImg, this.myImg.name);
+    myFormData.append('photo', this.myImg, this.myImg.name);
+
     this._BookService.registerBook(registerForm.value).subscribe(
       (resp) => {
         console.log("resp")
