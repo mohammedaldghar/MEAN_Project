@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
+
 import { CategoriesComponent } from './categories/categories.component';
 import { SpecificCategoryComponent } from './specific-category/specific-category.component';
 import { AuthorsComponent } from './authors/authors.component';
@@ -34,14 +36,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'admin-category', component: AdminCategoryComponent },
-  { path: 'admin-books', component: AdminBooksComponent },
-  { path: 'admin-authors',component:AdminAuthersComponent},
-  { path: 'admin', component: AdminLoginComponent},
-  { path: 'all', component: AllComponent },
-  { path: 'read', component: ReadComponent },
-  { path: 'current', component: Curntlty_readingComponent },
-  { path: 'wantToRead', component: Want_to_readComponent },
+  { path: 'admin-category', canActivate: [AuthGuard], component: AdminCategoryComponent },
+  { path: 'admin-books', canActivate: [AuthGuard], component: AdminBooksComponent },
+  { path: 'admin-authors', canActivate: [AuthGuard], component:AdminAuthersComponent},
+  { path: 'admin',  component: AdminLoginComponent},
+  { path: 'all', canActivate: [AuthGuard], component: AllComponent },
+  { path: 'read', canActivate: [AuthGuard], component: ReadComponent },
+  { path: 'current', canActivate: [AuthGuard], component: Curntlty_readingComponent },
+  { path: 'wantToRead', canActivate: [AuthGuard], component: Want_to_readComponent },
   { path: 'about', component: AboutusComponent},
   { path: 'terms', component: TermsComponent},
   { path: "**", component: NotFoundPageComponent }

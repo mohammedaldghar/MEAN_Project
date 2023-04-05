@@ -47,25 +47,25 @@
                 <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
                     <div class="form-group">
                         <label for="photo">photo</label>
-                        <input type="file" #photo (change)="uploadimg($event)" class="form-control" name="photo" id="photo">
+                        <input type="file" (change)="uploadimg($event)" class="form-control" name="photo" id="photo">
                     </div>
                     <div class="form-group">
-                        <label for="name">Book Name </label>
-                        <input type="text" (ngModel)="name" name="name" id="name" class="form-control"
+                        <label for="Name">Book Name </label>
+                        <input type="text" [(ngModel)]="bookToUpdate.Name" name="Name" id="Name" class="form-control"
                             placeholder="Book Name">
                     </div>
                     <div class="form-group">
                         <label for="CategoryId">category id</label>
-                        <input type="text" #CategoryId (ngModel)="bookToUpdate.CategoryId" class="form-control" name="CategoryId"
+                        <input type="text" [(ngModel)]="bookToUpdate.CategoryId" class="form-control" name="CategoryId"
                             id="CategoryId">
                     </div>
                     <div class="form-group">
                         <label for="AuthorId">Author id</label>
-                        <input type="text" #AuthorId [(ngModel)]="bookToUpdate.AuthorId" class="form-control" name="AuthorId" id="AuthorId">
+                        <input type="text" [(ngModel)]="bookToUpdate.AuthorId" class="form-control" name="AuthorId" id="AuthorId">
                     </div>
                     <div class="form-group">
                         <label for="Rating">Rating</label>
-                        <input type="number" #Rating [(ngModel)]="bookToUpdate.Rating" class="form-control" max="5" name="Rating"
+                        <input type="number" [(ngModel)]="bookToUpdate.Rating" class="form-control" max="5" name="Rating"
                             id="Rating">
                     </div>
                     <div class="form-group">
@@ -85,30 +85,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body " style="padding: 20px;">
-
                 <form #updateForm="ngForm" (ngSubmit)='updateBook()'>
                     <div class="form-group">
                         <label for="photo">photo</label>
-                        <input type="file" #photo (change)="uploadimg($event)" class="form-control" name="photo" id="photo">
+                        <input type="file" (change)="uploadimg($event)" class="form-control" name="photo" id="photo">
                     </div>
                     <div class="form-group">
                         <label for="name">Book Name</label>
-                        <input type="text" #name [(ngModel)]="bookToUpdate.Name" class="form-control" name="name"
-                            id="name">
+                        <input type="text" [(ngModel)]="bookToUpdate.Name" class="form-control" name="name" id="name">
                     </div>
                     <div class="form-group">
                         <label for="CategoryId">category id</label>
-                        <input type="text" #CategoryId [(ngModel)]="bookToUpdate.CategoryId" class="form-control" name="CategoryId"
+                        <input type="text" [(ngModel)]="bookToUpdate.CategoryId" class="form-control" name="CategoryId"
                             id="CategoryId">
                     </div>
                     <div class="form-group">
                         <label for="AuthorId">Author id</label>
-                        <input type="text" #AuthorId [(ngModel)]="bookToUpdate.AuthorId" class="form-control" name="AuthorId"
+                        <input type="text" [(ngModel)]="bookToUpdate.AuthorId" class="form-control" name="AuthorId"
                             id="AuthorId">
                     </div>
                     <div class="form-group">
                         <label for="Rating">Rating</label>
-                        <input type="number" #Rating [(ngModel)]="bookToUpdate.Rating" class="form-control" max="5" name="Rating" id="Rating">
+                        <input type="number" [(ngModel)]="bookToUpdate.Rating" class="form-control" max="5"
+                            name="Rating" id="Rating">
                     </div>
                     <div class="d-flex ">
                         <div><input type="submit" value="Update" class="btn btn-primary mr-4 "></div>

@@ -3,14 +3,12 @@ const router = express.Router();
 const BookModel = require("../models/book");
 const CategoryModel = require("../models/category");
 const AuthorModel = require("../models/author");
-
-const multer = require('multer')
-const photo = multer({ dest: 'uploads/' })
+const upload = require('../middleware/multer')
 
 /* add book  */
 
-router.post("/", photo.single('photo'), async (req, res) => {
-
+router.post("/", upload.single('photo'), async (req, res) => {
+  //console.log(req.file)
   const category = await CategoryModel.find({});
   if (!category.length == 0) {
     const author = await AuthorModel.find({});
@@ -20,17 +18,21 @@ router.post("/", photo.single('photo'), async (req, res) => {
       if (!books.length == 0) {
         count = books[books.length - 1].id;
       }
-      const cover='/uploads/${req.file.filename}'
-      let rate = req.body.Rating;
 
+      let rate = req.body.Rating;
       if (!rate) {
         rate = 0;
+      }
+      let cover;
+      if (req.file) {
+        cover = `http://localhost:5000/uploads/${req.file.filename}`
+        console.log(cover);
       }
       const newBook = {
         id: count + 1,
         ...req.body,
         Rating: rate,
-        photo:cover
+        photo: cover
       };
       await BookModel.create(newBook, (err, createdbook) => {
         if (!err) return res.json(createdbook);
@@ -62,10 +64,10 @@ router.get("/", (req, res) => {
 
 router.get("/popularBooks", (req, res) => {
   // BookModel.find({Rating:{$gte:4}}, (err, books) => {
-  BookModel.find( (err, books) => {
+  BookModel.find((err, books) => {
     if (!err) return res.send(books);
     res.status(500).json(err);
-  }).sort({Rating:-1}).limit(5)
+  }).sort({ Rating: -1 }).limit(5)
     .populate("AuthorId")
     .populate("CategoryId")
     .populate("Reviews.userId");
@@ -127,11 +129,24 @@ router.patch("/:id", (req, res) => {
 
 /* delete book */
 
-router.delete("/:id", (req, res) => {
-  BookModel.findOneAndRemove({ _id: req.params.id }, (err, book) => {
-    if (!err) return res.send("deleted");
-    res.status(500).send(err);
-  });
+router.delete("/:id", async (req, res) => {
+  console.log(req.params.id)
+  // const deletedBook = await BookModel.findByIdAndDelete(req.params.id)
+  // if (deletedBook) {
+  //   return res.send("deleted");
+  // } else {
+  //   res.status(500).send(err);
+  // }
+  try {
+    const deletedBook = await BookModel.findByIdAndDelete(req.params.id);
+    if (deletedBook) {
+      return res.status(200).send({ Message: "Deleted Successfully" });
+    } else {
+      return res.status(404).send({ Message: "book is not Exist" });
+    }
+  } catch (error) {
+    return res.status(500).json({ Message: "Error In Delete" });
+  }
 });
 
 /* delete all books */
@@ -148,9 +163,9 @@ router.post("/:id/comment", async (req, res) => {
   let comment = req.body;
   const modfiedBook = await BookModel.findById(req.params.id);
   modfiedBook.Reviews.push(comment);
-   BookModel.findByIdAndUpdate(req.params.id, modfiedBook, (err) => {
-      if (!err) {
-        return res.status(200).send("Comment added successfully to Book");
+  BookModel.findByIdAndUpdate(req.params.id, modfiedBook, (err) => {
+    if (!err) {
+      return res.status(200).send("Comment added successfully to Book");
     } else {
       console.log(err);
       return res.status(500).send("err");

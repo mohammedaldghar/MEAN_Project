@@ -48,23 +48,14 @@ export class BookService {
     return this.http.post('http://localhost:5000/book/' + bookId + '/comment', { 'userId': userId, 'Comment': comment });
   }
 
-  registerBook(bookData: any) {
+  registerBook(bookData: any):Observable<any> {
     return this.http.post('http://localhost:5000/book/', bookData)
   }
-  update(book: Book) {
+  update(book: Book):Observable <any> {
     console.log(book.Name);
-    this.http.patch('http://localhost:5000/book/' + book._id, book).subscribe(
-      (resp) => {
-        console.log("resp")
-      },
-      (err) => {
-        console.log("err");
-
-      }
-    )
+    return this.http.patch('http://localhost:5000/book/' + book._id, book)
   }
-  deleteBookById(id: any) {
-    this.http.delete('http://localhost:5000/book/' + id).subscribe()
+  deleteBookById(id: any):Observable<any>{
+    return this.http.delete('http://localhost:5000/book/' + id)
   }
-
 }

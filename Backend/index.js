@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require('fs')
 const mongoose = require("mongoose");
 const cors = require("cors")
 require("dotenv").config();
@@ -17,6 +18,12 @@ const DB_URL = process.env.DB_URL;
 const server = express();
 server.use(express.json());
 server.use(cors());
+
+const imagesDir = "uploads";
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir);
+}
+server.use(`/${imagesDir}`, express.static(imagesDir));
 
 server.use(["/book", "/Book"], BookRouter);
 server.use(["/category", "/Category"], CategoryRouter);
